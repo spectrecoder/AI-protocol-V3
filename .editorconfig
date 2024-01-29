@@ -1,0 +1,59 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_style = tab
+indent_size = 2
+insert_final_newline = true
+max_line_length = 120
+
+[*.csv]
+insert_final_newline = false
+
+[*.md]
+indent_size = 3
+tab_width=3
+trim_trailing_whitespace = false
+
+[package.json]
+indent_style = space
+
+#  Ref ERC1363 formatting with spaces preserved
+[**/ERC1363.behaviour.js]
+indent_style = space
+[**/ERC1363Payable.behaviour.js]
+indent_style = space
+[**/SupportsInterface.behavior.js]
+indent_style = space
+# OpenZeppelin formatting with spaces preserved
+[**/EIP2612.behavior.js]
+indent_style = space
+[**/ERC20.behavior.js]
+indent_style = space
+[**/ERC20.behavior.ext.js]
+indent_style = space
+[**/Voting.behavior.js]
+indent_style = space
+[**/ERC721.behavior.js]
+indent_style = space
+[**/ERC721URIStorage.behaviour.js]
+indent_style = space
+# Compound formatting with spaces preserved
+[**/Comp.behavior.js]
+indent_style = space
+# Zeppelin/Compound EIP712 formatting with spaces preserved
+[**/eip712.js]
+indent_style = space
+[**/sign.js]
+indent_style = space
+# Coinbase formatting with spaces preserved
+[**/coinbase/EIP3009.behavior.js]
+indent_style = space
+[**/coinbase/helpers/constants.js]
+indent_style = space
+[**/coinbase/helpers/index.js]
+indent_style = space

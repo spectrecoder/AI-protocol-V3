@@ -1,0 +1,808 @@
+{
+  "address": "0xa132F9aFe42797f5C43BFA30dF99069B6Cb32a15",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_sharesContractAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_paymentToken",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "feeAmount",
+          "type": "uint256"
+        }
+      ],
+      "name": "FeeReceived",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "holder",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "rewardAmount",
+          "type": "uint256"
+        }
+      ],
+      "name": "RewardClaimed",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "requested",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "assigned",
+          "type": "uint256"
+        }
+      ],
+      "name": "RoleUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "trader",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "bool",
+          "name": "isBuy",
+          "type": "bool"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "sharesAmount",
+          "type": "uint256"
+        }
+      ],
+      "name": "SharesTraded",
+      "type": "event"
+    },
+    {
+      "stateMutability": "payable",
+      "type": "fallback"
+    },
+    {
+      "inputs": [],
+      "name": "ROLE_ACCESS_MANAGER",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "ROLE_UPGRADE_MANAGER",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "accRewardPerShare",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "claimTheReward",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "features",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getPaymentToken",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        }
+      ],
+      "name": "getRole",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_sharesContractAddress",
+          "type": "address"
+        }
+      ],
+      "name": "initializeSharesContractAddressIfRequired",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "required",
+          "type": "uint256"
+        }
+      ],
+      "name": "isFeatureEnabled",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "required",
+          "type": "uint256"
+        }
+      ],
+      "name": "isOperatorInRole",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "required",
+          "type": "uint256"
+        }
+      ],
+      "name": "isSenderInRole",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "onTransferReceived",
+      "outputs": [
+        {
+          "internalType": "bytes4",
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "holder",
+          "type": "address"
+        }
+      ],
+      "name": "pendingReward",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_sharesContractAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_paymentToken",
+          "type": "address"
+        }
+      ],
+      "name": "postConstruct",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "sharesContractAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalShares",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_mask",
+          "type": "uint256"
+        }
+      ],
+      "name": "updateFeatures",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "role",
+          "type": "uint256"
+        }
+      ],
+      "name": "updateRole",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "userInfo",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "shares",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "rewardDebt",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "claimedAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "unclaimedAmount",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "stateMutability": "payable",
+      "type": "receive"
+    }
+  ],
+  "transactionHash": "0x6283d0437867ecc431c21a981c70c4382fa5ab0d5ea48e690a56bf97dc34157e",
+  "receipt": {
+    "to": null,
+    "from": "0x5F185Da55f7BBD9217E3b3CeE06b180721FA6d34",
+    "contractAddress": "0xa132F9aFe42797f5C43BFA30dF99069B6Cb32a15",
+    "transactionIndex": 1,
+    "gasUsed": "1268523",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000020000000000000000000800400000000000000000000000000000000000000001000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x5a44b10b4d7f598516a8804ac41e64553d1bd2fbd308f6ebecefb410f3bd461c",
+    "transactionHash": "0x6283d0437867ecc431c21a981c70c4382fa5ab0d5ea48e690a56bf97dc34157e",
+    "logs": [
+      {
+        "transactionIndex": 1,
+        "blockNumber": 15143892,
+        "transactionHash": "0x6283d0437867ecc431c21a981c70c4382fa5ab0d5ea48e690a56bf97dc34157e",
+        "address": "0xa132F9aFe42797f5C43BFA30dF99069B6Cb32a15",
+        "topics": [
+          "0xe9be537308880e0f56b7d7cfd7abf85f14c4934486d138f848b92a0cbaf659b4",
+          "0x0000000000000000000000000000000000000000000000000000000000000000"
+        ],
+        "data": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "logIndex": 0,
+        "blockHash": "0x5a44b10b4d7f598516a8804ac41e64553d1bd2fbd308f6ebecefb410f3bd461c"
+      }
+    ],
+    "blockNumber": 15143892,
+    "cumulativeGasUsed": "1315364",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0x0000000000000000000000000000000000000000",
+    "0x0000000000000000000000000000000000000000",
+    "0x0000000000000000000000000000000000000000"
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "579c7556a7c00d23ecd29fca4cc3470d",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_sharesContractAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_paymentToken\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"feeAmount\",\"type\":\"uint256\"}],\"name\":\"FeeReceived\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"holder\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"rewardAmount\",\"type\":\"uint256\"}],\"name\":\"RewardClaimed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"requested\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"assigned\",\"type\":\"uint256\"}],\"name\":\"RoleUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"trader\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"bool\",\"name\":\"isBuy\",\"type\":\"bool\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"sharesAmount\",\"type\":\"uint256\"}],\"name\":\"SharesTraded\",\"type\":\"event\"},{\"stateMutability\":\"payable\",\"type\":\"fallback\"},{\"inputs\":[],\"name\":\"ROLE_ACCESS_MANAGER\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"ROLE_UPGRADE_MANAGER\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"accRewardPerShare\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"claimTheReward\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"features\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getPaymentToken\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"}],\"name\":\"getRole\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_sharesContractAddress\",\"type\":\"address\"}],\"name\":\"initializeSharesContractAddressIfRequired\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"required\",\"type\":\"uint256\"}],\"name\":\"isFeatureEnabled\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"required\",\"type\":\"uint256\"}],\"name\":\"isOperatorInRole\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"required\",\"type\":\"uint256\"}],\"name\":\"isSenderInRole\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"onTransferReceived\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"holder\",\"type\":\"address\"}],\"name\":\"pendingReward\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_sharesContractAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_paymentToken\",\"type\":\"address\"}],\"name\":\"postConstruct\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"sharesContractAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalShares\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_mask\",\"type\":\"uint256\"}],\"name\":\"updateFeatures\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"role\",\"type\":\"uint256\"}],\"name\":\"updateRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"userInfo\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"shares\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"rewardDebt\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"claimedAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"unclaimedAmount\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"stateMutability\":\"payable\",\"type\":\"receive\"}],\"devdoc\":{\"details\":\"Apart from the `accept(uint256,address)` function designed to accept the fees from the      curve contract, the implementation must implement receive(), fallback(), and onTransferReceived()      functions to accept direct payments in both ETH and/or ERC20 payment tokenreceive() and onTransferReceived() with an empty data field must accept the fee in the same way      as an accept() function would do, but in a passive way (without ERC20 transfer)The fallback() and onTransferReceived() with non-empty data field must accept the fee and the trading event;      trading event encoded in the bytes data field contains the information      on the trade which resulted in the fee being sent:      - address trader - shares holder/trader      - bool isBuy - true if shares were bought, false if shares were sold      - uint256 sharesAmount - amount of shares bought or sold      the values above are packed as data = abi.encode(trader, isBuy, sharesAmount)      and can be unpacked as (trader, isBuy, sharesAmount) = abi.decode(data, (address, bool, uint256))      if specified, the data field must be parsed by the implementation and its containing data applied;      standard logic applies, if the data is malformed implementation should throw\",\"kind\":\"dev\",\"methods\":{\"claimTheReward()\":{\"details\":\"Holder can verify pending reward amount with the `pendingReward` function\"},\"constructor\":{\"details\":\"Deploys the distributor contract\",\"params\":{\"_owner\":\"contract, optional (can be zero address), since there are no admin functions\",\"_paymentToken\":\"ERC1363 payment token to bind to, optional (can be zero address),      zero address means distributor works with the plain ETH\",\"_sharesContractAddress\":\"TradeableShares contract to bind the distributor to,      optional (can be zero address), this can be set up later with the      `initializeSharesContractAddressIfRequired` function\"}},\"features()\":{\"details\":\"Effectively reads userRoles role for the contract itself\",\"returns\":{\"_0\":\"256-bit bitmask of the features enabled\"}},\"getPaymentToken()\":{\"returns\":{\"_0\":\"ERC20 payment token address the contract is bound to,      or zero zero address if it operates with the plain ETH\"}},\"getRole(address)\":{\"details\":\"Having a simple getter instead of making the mapping public      allows enforcing the encapsulation of the mapping and protects from      writing to it directly in the inheriting smart contracts\",\"params\":{\"operator\":\"address of a user to read permissions for,      or self address to read global features of the smart contract\"}},\"initializeSharesContractAddressIfRequired(address)\":{\"details\":\"TradeableShares contract can be set only once; fails if it is already set\",\"params\":{\"_sharesContractAddress\":\"TradeableShares contract to bind the distributor to\"}},\"isFeatureEnabled(uint256)\":{\"params\":{\"required\":\"set of features to check against\"},\"returns\":{\"_0\":\"true if all the features requested are enabled, false otherwise\"}},\"isOperatorInRole(address,uint256)\":{\"params\":{\"operator\":\"address of the user to check role for\",\"required\":\"set of permissions (role) to check\"},\"returns\":{\"_0\":\"true if all the permissions requested are enabled, false otherwise\"}},\"isSenderInRole(uint256)\":{\"details\":\"Used in smart contracts only. Off-chain clients should use `isOperatorInRole`.\",\"params\":{\"required\":\"set of permissions (role) to check against\"},\"returns\":{\"_0\":\"true if all the permissions requested are enabled, false otherwise\"}},\"onTransferReceived(address,address,uint256,bytes)\":{\"details\":\"Non-empty `data` executes trade updates and therefore is restricted to be sent only      by `sharesContractAddress`\",\"params\":{\"data\":\"bytes Additional data with no specified format\",\"from\":\"address The address which are token transferred from\",\"operator\":\"address The address which called `transferAndCall` or `transferFromAndCall` function\",\"value\":\"uint256 The amount of tokens transferred\"},\"returns\":{\"_0\":\"`bytes4(keccak256(\\\"onTransferReceived(address,address,uint256,bytes)\\\"))`      unless throwing\"}},\"pendingReward(address)\":{\"params\":{\"holder\":\"the holder address to query the reward for\"},\"returns\":{\"_0\":\"pending reward amount\\\\\"}},\"postConstruct(address,address,address)\":{\"details\":\"\\\"Constructor replacement\\\" for initializable, must be execute during or immediately after deployment      see https://docs.openzeppelin.com/upgrades-plugins/1.x/writing-upgradeable#initializers\",\"params\":{\"_owner\":\"contract, optional (can be zero address), since there are no admin functions\",\"_paymentToken\":\"ERC1363 payment token to bind to, optional (can be zero address),      zero address means distributor works with the plain ETH\",\"_sharesContractAddress\":\"TradeableShares contract to bind the distributor to,      optional (can be zero address), this can be set up later with the      `initializeSharesContractAddressIfRequired` function\"}},\"updateFeatures(uint256)\":{\"details\":\"Requires transaction sender to have `ROLE_ACCESS_MANAGER` permissionFunction is left for backward compatibility with older versions\",\"params\":{\"_mask\":\"bitmask representing a set of features to enable/disable\"}},\"updateRole(address,uint256)\":{\"details\":\"Setting role to zero is equivalent to removing an all permissionsSetting role to `FULL_PRIVILEGES_MASK` is equivalent to      copying senders' permissions (role) to the userRequires transaction sender to have `ROLE_ACCESS_MANAGER` permission\",\"params\":{\"operator\":\"address of a user to alter permissions for,       or self address to alter global features of the smart contract\",\"role\":\"bitmask representing a set of permissions to      enable/disable for a user specified\"}}},\"title\":\"Bonding Curve Holder Reward Distributor\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"ROLE_ACCESS_MANAGER()\":{\"notice\":\"Access manager is responsible for assigning the roles to users,      enabling/disabling global features of the smart contractAccess manager can add, remove and update user roles,      remove and update global features\"},\"ROLE_UPGRADE_MANAGER()\":{\"notice\":\"Upgrade manager is responsible for smart contract upgrades,      see https://docs.openzeppelin.com/contracts/4.x/api/proxy#UUPSUpgradeable      see https://docs.openzeppelin.com/contracts/4.x/upgradeable\"},\"accRewardPerShare()\":{\"notice\":\"accumulated reward per share, times 1e18 (with 18 decimal precision)\"},\"claimTheReward()\":{\"notice\":\"Executed by the holder to claim entire pending reward\"},\"features()\":{\"notice\":\"Retrieves globally set of features enabled\"},\"getPaymentToken()\":{\"notice\":\"ERC20 payment token distributor is bound to\"},\"getRole(address)\":{\"notice\":\"Reads the permissions (role) for a given user from the `userRoles` mapping      (privileged addresses with defined roles/permissions)In the context of ERC20/ERC721 tokens these can be permissions to      allow minting or burning tokens, transferring on behalf and so on\"},\"initializeSharesContractAddressIfRequired(address)\":{\"notice\":\"Sets the TradeableShares contract to bind the distributor to\"},\"isFeatureEnabled(uint256)\":{\"notice\":\"Checks if requested set of features is enabled globally on the contract\"},\"isOperatorInRole(address,uint256)\":{\"notice\":\"Checks if operator has all the permissions (role) required\"},\"isSenderInRole(uint256)\":{\"notice\":\"Checks if transaction sender `msg.sender` has all the permissions required\"},\"onTransferReceived(address,address,uint256,bytes)\":{\"notice\":\"Anyone can send some additional rewards \\u2013 just use empty `data` for a callback\"},\"pendingReward(address)\":{\"notice\":\"Pending (claimable) reward. This is the amount which can be claimed using `claimTheReward`\"},\"sharesContractAddress()\":{\"notice\":\"bonding curve contract address\"},\"totalShares()\":{\"notice\":\"total number of share registered\"},\"updateFeatures(uint256)\":{\"notice\":\"Updates set of the globally enabled features (`features`),      taking into account sender's permissions\"},\"updateRole(address,uint256)\":{\"notice\":\"Updates set of permissions (role) for a given user,      taking into account sender's permissions.\"}},\"notice\":\"Holder reward distributor keeps track of every trade event happening in the curve,      and based on the amount of shares the holder has, alters the holders' reward weight,      which directly affects the amount of the distributed rewards between the holdersHolder reward distributor accepts the fees from the curve and distributes these fees      across shares holders proportionally to their weights\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/bonding_curves/HoldersRewardsDistributorV1.sol\":\"HoldersRewardsDistributorV1\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts v4.4.1 (proxy/utils/Initializable.sol)\\n\\npragma solidity ^0.8.0;\\n\\nimport \\\"../../utils/AddressUpgradeable.sol\\\";\\n\\n/**\\n * @dev This is a base contract to aid in writing upgradeable contracts, or any kind of contract that will be deployed\\n * behind a proxy. Since a proxied contract can't have a constructor, it's common to move constructor logic to an\\n * external initializer function, usually called `initialize`. It then becomes necessary to protect this initializer\\n * function so it can only be called once. The {initializer} modifier provided by this contract will have this effect.\\n *\\n * TIP: To avoid leaving the proxy in an uninitialized state, the initializer function should be called as early as\\n * possible by providing the encoded function call as the `_data` argument to {ERC1967Proxy-constructor}.\\n *\\n * CAUTION: When used with inheritance, manual care must be taken to not invoke a parent initializer twice, or to ensure\\n * that all initializers are idempotent. This is not verified automatically as constructors are by Solidity.\\n *\\n * [CAUTION]\\n * ====\\n * Avoid leaving a contract uninitialized.\\n *\\n * An uninitialized contract can be taken over by an attacker. This applies to both a proxy and its implementation\\n * contract, which may impact the proxy. To initialize the implementation contract, you can either invoke the\\n * initializer manually, or you can include a constructor to automatically mark it as initialized when it is deployed:\\n *\\n * [.hljs-theme-light.nopadding]\\n * ```\\n * /// @custom:oz-upgrades-unsafe-allow constructor\\n * constructor() initializer {}\\n * ```\\n * ====\\n */\\nabstract contract Initializable {\\n    /**\\n     * @dev Indicates that the contract has been initialized.\\n     */\\n    bool private _initialized;\\n\\n    /**\\n     * @dev Indicates that the contract is in the process of being initialized.\\n     */\\n    bool private _initializing;\\n\\n    /**\\n     * @dev Modifier to protect an initializer function from being invoked twice.\\n     */\\n    modifier initializer() {\\n        // If the contract is initializing we ignore whether _initialized is set in order to support multiple\\n        // inheritance patterns, but we only do this in the context of a constructor, because in other contexts the\\n        // contract may have been reentered.\\n        require(_initializing ? _isConstructor() : !_initialized, \\\"Initializable: contract is already initialized\\\");\\n\\n        bool isTopLevelCall = !_initializing;\\n        if (isTopLevelCall) {\\n            _initializing = true;\\n            _initialized = true;\\n        }\\n\\n        _;\\n\\n        if (isTopLevelCall) {\\n            _initializing = false;\\n        }\\n    }\\n\\n    /**\\n     * @dev Modifier to protect an initialization function so that it can only be invoked by functions with the\\n     * {initializer} modifier, directly or indirectly.\\n     */\\n    modifier onlyInitializing() {\\n        require(_initializing, \\\"Initializable: contract is not initializing\\\");\\n        _;\\n    }\\n\\n    function _isConstructor() private view returns (bool) {\\n        return !AddressUpgradeable.isContract(address(this));\\n    }\\n}\\n\",\"keccak256\":\"0x68861bcc80cacbd498efde75aab6c74a486cc48262660d326c8d7530d9752097\",\"license\":\"MIT\"},\"@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts v4.4.1 (utils/Address.sol)\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Collection of functions related to the address type\\n */\\nlibrary AddressUpgradeable {\\n    /**\\n     * @dev Returns true if `account` is a contract.\\n     *\\n     * [IMPORTANT]\\n     * ====\\n     * It is unsafe to assume that an address for which this function returns\\n     * false is an externally-owned account (EOA) and not a contract.\\n     *\\n     * Among others, `isContract` will return false for the following\\n     * types of addresses:\\n     *\\n     *  - an externally-owned account\\n     *  - a contract in construction\\n     *  - an address where a contract will be created\\n     *  - an address where a contract lived, but was destroyed\\n     * ====\\n     */\\n    function isContract(address account) internal view returns (bool) {\\n        // This method relies on extcodesize, which returns 0 for contracts in\\n        // construction, since the code is only stored at the end of the\\n        // constructor execution.\\n\\n        uint256 size;\\n        assembly {\\n            size := extcodesize(account)\\n        }\\n        return size > 0;\\n    }\\n\\n    /**\\n     * @dev Replacement for Solidity's `transfer`: sends `amount` wei to\\n     * `recipient`, forwarding all available gas and reverting on errors.\\n     *\\n     * https://eips.ethereum.org/EIPS/eip-1884[EIP1884] increases the gas cost\\n     * of certain opcodes, possibly making contracts go over the 2300 gas limit\\n     * imposed by `transfer`, making them unable to receive funds via\\n     * `transfer`. {sendValue} removes this limitation.\\n     *\\n     * https://diligence.consensys.net/posts/2019/09/stop-using-soliditys-transfer-now/[Learn more].\\n     *\\n     * IMPORTANT: because control is transferred to `recipient`, care must be\\n     * taken to not create reentrancy vulnerabilities. Consider using\\n     * {ReentrancyGuard} or the\\n     * https://solidity.readthedocs.io/en/v0.5.11/security-considerations.html#use-the-checks-effects-interactions-pattern[checks-effects-interactions pattern].\\n     */\\n    function sendValue(address payable recipient, uint256 amount) internal {\\n        require(address(this).balance >= amount, \\\"Address: insufficient balance\\\");\\n\\n        (bool success, ) = recipient.call{value: amount}(\\\"\\\");\\n        require(success, \\\"Address: unable to send value, recipient may have reverted\\\");\\n    }\\n\\n    /**\\n     * @dev Performs a Solidity function call using a low level `call`. A\\n     * plain `call` is an unsafe replacement for a function call: use this\\n     * function instead.\\n     *\\n     * If `target` reverts with a revert reason, it is bubbled up by this\\n     * function (like regular Solidity function calls).\\n     *\\n     * Returns the raw returned data. To convert to the expected return value,\\n     * use https://solidity.readthedocs.io/en/latest/units-and-global-variables.html?highlight=abi.decode#abi-encoding-and-decoding-functions[`abi.decode`].\\n     *\\n     * Requirements:\\n     *\\n     * - `target` must be a contract.\\n     * - calling `target` with `data` must not revert.\\n     *\\n     * _Available since v3.1._\\n     */\\n    function functionCall(address target, bytes memory data) internal returns (bytes memory) {\\n        return functionCall(target, data, \\\"Address: low-level call failed\\\");\\n    }\\n\\n    /**\\n     * @dev Same as {xref-Address-functionCall-address-bytes-}[`functionCall`], but with\\n     * `errorMessage` as a fallback revert reason when `target` reverts.\\n     *\\n     * _Available since v3.1._\\n     */\\n    function functionCall(\\n        address target,\\n        bytes memory data,\\n        string memory errorMessage\\n    ) internal returns (bytes memory) {\\n        return functionCallWithValue(target, data, 0, errorMessage);\\n    }\\n\\n    /**\\n     * @dev Same as {xref-Address-functionCall-address-bytes-}[`functionCall`],\\n     * but also transferring `value` wei to `target`.\\n     *\\n     * Requirements:\\n     *\\n     * - the calling contract must have an ETH balance of at least `value`.\\n     * - the called Solidity function must be `payable`.\\n     *\\n     * _Available since v3.1._\\n     */\\n    function functionCallWithValue(\\n        address target,\\n        bytes memory data,\\n        uint256 value\\n    ) internal returns (bytes memory) {\\n        return functionCallWithValue(target, data, value, \\\"Address: low-level call with value failed\\\");\\n    }\\n\\n    /**\\n     * @dev Same as {xref-Address-functionCallWithValue-address-bytes-uint256-}[`functionCallWithValue`], but\\n     * with `errorMessage` as a fallback revert reason when `target` reverts.\\n     *\\n     * _Available since v3.1._\\n     */\\n    function functionCallWithValue(\\n        address target,\\n        bytes memory data,\\n        uint256 value,\\n        string memory errorMessage\\n    ) internal returns (bytes memory) {\\n        require(address(this).balance >= value, \\\"Address: insufficient balance for call\\\");\\n        require(isContract(target), \\\"Address: call to non-contract\\\");\\n\\n        (bool success, bytes memory returndata) = target.call{value: value}(data);\\n        return verifyCallResult(success, returndata, errorMessage);\\n    }\\n\\n    /**\\n     * @dev Same as {xref-Address-functionCall-address-bytes-}[`functionCall`],\\n     * but performing a static call.\\n     *\\n     * _Available since v3.3._\\n     */\\n    function functionStaticCall(address target, bytes memory data) internal view returns (bytes memory) {\\n        return functionStaticCall(target, data, \\\"Address: low-level static call failed\\\");\\n    }\\n\\n    /**\\n     * @dev Same as {xref-Address-functionCall-address-bytes-string-}[`functionCall`],\\n     * but performing a static call.\\n     *\\n     * _Available since v3.3._\\n     */\\n    function functionStaticCall(\\n        address target,\\n        bytes memory data,\\n        string memory errorMessage\\n    ) internal view returns (bytes memory) {\\n        require(isContract(target), \\\"Address: static call to non-contract\\\");\\n\\n        (bool success, bytes memory returndata) = target.staticcall(data);\\n        return verifyCallResult(success, returndata, errorMessage);\\n    }\\n\\n    /**\\n     * @dev Tool to verifies that a low level call was successful, and revert if it wasn't, either by bubbling the\\n     * revert reason using the provided one.\\n     *\\n     * _Available since v4.3._\\n     */\\n    function verifyCallResult(\\n        bool success,\\n        bytes memory returndata,\\n        string memory errorMessage\\n    ) internal pure returns (bytes memory) {\\n        if (success) {\\n            return returndata;\\n        } else {\\n            // Look for revert reason and bubble it up if present\\n            if (returndata.length > 0) {\\n                // The easiest way to bubble the revert reason is using memory via assembly\\n\\n                assembly {\\n                    let returndata_size := mload(returndata)\\n                    revert(add(32, returndata), returndata_size)\\n                }\\n            } else {\\n                revert(errorMessage);\\n            }\\n        }\\n    }\\n}\\n\",\"keccak256\":\"0x3f0f878c796dfc7feba6d3c4e3e526c14c7deae8b7bfc71088e3f38fab0d77b3\",\"license\":\"MIT\"},\"contracts/bonding_curves/HoldersRewardsDistributor.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.4;\\n\\nimport \\\"../interfaces/ERC1363Spec.sol\\\";\\n\\n/**\\n * @title Bonding Curve Holder Reward Distributor\\n *\\n * @notice Holder reward distributor keeps track of every trade event happening in the curve,\\n *      and based on the amount of shares the holder has, alters the holders' reward weight,\\n *      which directly affects the amount of the distributed rewards between the holders\\n *\\n * @notice Holder reward distributor accepts the fees from the curve and distributes these fees\\n *      across shares holders proportionally to their weights\\n *\\n * @dev Apart from the `accept(uint256,address)` function designed to accept the fees from the\\n *      curve contract, the implementation must implement receive(), fallback(), and onTransferReceived()\\n *      functions to accept direct payments in both ETH and/or ERC20 payment token\\n *\\n * @dev receive() and onTransferReceived() with an empty data field must accept the fee in the same way\\n *      as an accept() function would do, but in a passive way (without ERC20 transfer)\\n *\\n * @dev The fallback() and onTransferReceived() with non-empty data field must accept the fee and the trading event;\\n *      trading event encoded in the bytes data field contains the information\\n *      on the trade which resulted in the fee being sent:\\n *\\n *      - address trader - shares holder/trader\\n *      - bool isBuy - true if shares were bought, false if shares were sold\\n *      - uint256 sharesAmount - amount of shares bought or sold\\n *\\n *      the values above are packed as data = abi.encode(trader, isBuy, sharesAmount)\\n *      and can be unpacked as (trader, isBuy, sharesAmount) = abi.decode(data, (address, bool, uint256))\\n *\\n *      if specified, the data field must be parsed by the implementation and its containing data applied;\\n *      standard logic applies, if the data is malformed implementation should throw\\n *\\n */\\ninterface HoldersRewardsDistributor is ERC1363Receiver {\\n\\t/**\\n\\t * @dev Fired in `sharesBought` and `sharesSold`\\n\\t *\\n\\t * @param trader is a buyer or a seller, depending on the operation type\\n\\t * @param isBuy true if the event comes from the `sharesBought` and represents the buy operation,\\n\\t *      false if the event comes from the `sharesSold` and represents the sell operation\\n\\t * @param sharesAmount amount of the shares bought or sold (see `isBuy`)\\n\\t */\\n\\tevent SharesTraded(address indexed trader, bool indexed isBuy, uint256 sharesAmount);\\n\\n\\t/**\\n\\t * @dev Fired when the fee for the distribution is received\\n\\t *\\n\\t * @param feeAmount amount of the fee to distribute between the holders\\n\\t */\\n\\tevent FeeReceived(uint256 feeAmount);\\n\\n\\t/**\\n\\t * @dev Fired in `claimReward`\\n\\t *\\n\\t * @param holder address of the trader (and shares holder) who received the reward\\n\\t * @param rewardAmount amount of the reward sent\\n\\t */\\n\\tevent RewardClaimed(address indexed holder, uint256 rewardAmount);\\n\\n\\t/**\\n\\t * @notice ERC20 payment token distributor is bound to\\n\\t *\\n\\t * @return paymentToken ERC20 payment token address the contract is bound to,\\n\\t *      or zero zero address if it operates with the plain ETH\\n\\t */\\n\\tfunction getPaymentToken() external view returns(address paymentToken);\\n\\n/*\\n\\t*/\\n/**\\n\\t * @notice Notifies the distributor about the trade event\\n\\t *\\n\\t * @dev Trade amount specified affects holder's (buyer's) weight when calculating the reward\\n\\t *\\n\\t * @param buyer shares buyer (becomes shares holder if not yet), a.k.a trader\\n\\t * @param amountBought amount of the shares bought\\n\\t *//*\\n\\n\\tfunction sharesBought(address buyer, uint256 amountBought) external;\\n\\n\\t*/\\n/**\\n\\t * @notice Notifies the distributor about the trade event\\n\\t *\\n\\t * @dev Trade amount specified affects holder's (seller's) weight when calculating the reward\\n\\t *\\n\\t * @param seller shares seller (shares holder), a.k.a trader\\n\\t * @param amountSold amount of the shares sold\\n\\t *//*\\n\\n\\tfunction sharesSold(address seller, uint256 amountSold) external;\\n\\n\\t*/\\n/**\\n\\t * @notice Executed by the fee sender to send the fee; in case of the ERC20 payment,\\n\\t *      this is the ask to take the specified amount of the ERC20 token of the specified type;\\n\\t *      in case of the ETH payment, the amount must be supplied with the transaction itself\\n\\t *\\n\\t * @dev When paying with an ERC20 payment token, sender must approve the contract for\\n\\t *      at least the amount specified before executing this function\\n\\t *\\n\\t * @dev Updates the accumulated reward per share\\n\\t *\\n\\t * @param feeAmount amount of the fee sent,\\n\\t *      in the case of ETH payment must be equal to msg.value\\n\\t *//*\\n\\n\\tfunction accept(uint256 feeAmount) external payable;\\n*/\\n\\n\\t/**\\n\\t * @notice Executed by the holder to claim entire pending reward\\n\\t *\\n\\t * @dev Holder can verify pending reward amount with the `pendingReward` function\\n\\t */\\n\\tfunction claimTheReward() external;\\n\\n\\t/**\\n\\t * @notice Pending (claimable) reward. This is the amount which can be claimed using `claimTheReward`\\n\\t *\\n\\t * @param holder the holder address to query the reward for\\n\\t * @return rewardAmount pending reward amount\\\\\\n\\t */\\n\\tfunction pendingReward(address holder) external view returns(uint256 rewardAmount);\\n}\\n\",\"keccak256\":\"0xc1749ddf31e8338a0e72081b19a792c4496699cd0bfff442f88281a0a32d5699\",\"license\":\"MIT\"},\"contracts/bonding_curves/HoldersRewardsDistributorV1.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.4;\\n\\nimport \\\"./HoldersRewardsDistributor.sol\\\";\\nimport \\\"../utils/Transfers.sol\\\";\\nimport \\\"../utils/InitializableAccessControl.sol\\\";\\n\\n/**\\n * @title Bonding Curve Holder Reward Distributor\\n *\\n * @notice Holder reward distributor keeps track of every trade event happening in the curve,\\n *      and based on the amount of shares the holder has, alters the holders' reward weight,\\n *      which directly affects the amount of the distributed rewards between the holders\\n *\\n * @notice Holder reward distributor accepts the fees from the curve and distributes these fees\\n *      across shares holders proportionally to their weights\\n *\\n * @dev Apart from the `accept(uint256,address)` function designed to accept the fees from the\\n *      curve contract, the implementation must implement receive(), fallback(), and onTransferReceived()\\n *      functions to accept direct payments in both ETH and/or ERC20 payment token\\n *\\n * @dev receive() and onTransferReceived() with an empty data field must accept the fee in the same way\\n *      as an accept() function would do, but in a passive way (without ERC20 transfer)\\n *\\n * @dev The fallback() and onTransferReceived() with non-empty data field must accept the fee and the trading event;\\n *      trading event encoded in the bytes data field contains the information\\n *      on the trade which resulted in the fee being sent:\\n *\\n *      - address trader - shares holder/trader\\n *      - bool isBuy - true if shares were bought, false if shares were sold\\n *      - uint256 sharesAmount - amount of shares bought or sold\\n *\\n *      the values above are packed as data = abi.encode(trader, isBuy, sharesAmount)\\n *      and can be unpacked as (trader, isBuy, sharesAmount) = abi.decode(data, (address, bool, uint256))\\n *\\n *      if specified, the data field must be parsed by the implementation and its containing data applied;\\n *      standard logic applies, if the data is malformed implementation should throw\\n *\\n */\\ncontract HoldersRewardsDistributorV1 is HoldersRewardsDistributor, InitializableAccessControl {\\n\\t// Info of each user.\\n\\tstruct UserInfo {\\n\\t\\tuint256 shares;\\n\\t\\tuint256 rewardDebt;\\n\\t\\tuint256 claimedAmount;\\n\\t\\tuint256 unclaimedAmount;\\n\\t}\\n\\n\\t// ERC20 payment token address\\n\\taddress private /*immutable*/ paymentToken;\\n\\t/// bonding curve contract address\\n\\taddress public sharesContractAddress;\\n\\t/// accumulated reward per share, times 1e18 (with 18 decimal precision)\\n\\tuint256 public accRewardPerShare;\\n\\t/// total number of share registered\\n\\tuint256 public totalShares;\\n\\t// Info of each user that stakes LP tokens.\\n\\tmapping(address => UserInfo) public userInfo;\\n\\n\\t/**\\n\\t * @dev Deploys the distributor contract\\n\\t *\\n\\t * @param _owner contract, optional (can be zero address), since there are no admin functions\\n\\t * @param _sharesContractAddress TradeableShares contract to bind the distributor to,\\n\\t *      optional (can be zero address), this can be set up later with the\\n\\t *      `initializeSharesContractAddressIfRequired` function\\n\\t * @param _paymentToken ERC1363 payment token to bind to, optional (can be zero address),\\n\\t *      zero address means distributor works with the plain ETH\\n\\t */\\n\\tconstructor(address _owner, address _sharesContractAddress, address _paymentToken) initializer {\\n\\t\\t// initialize the deployed instance\\n\\t\\tpostConstruct(_owner, _sharesContractAddress, _paymentToken);\\n\\t}\\n\\n\\t/**\\n\\t * @dev \\\"Constructor replacement\\\" for initializable, must be execute during or immediately after deployment\\n\\t *      see https://docs.openzeppelin.com/upgrades-plugins/1.x/writing-upgradeable#initializers\\n\\t *\\n\\t * @param _owner contract, optional (can be zero address), since there are no admin functions\\n\\t * @param _sharesContractAddress TradeableShares contract to bind the distributor to,\\n\\t *      optional (can be zero address), this can be set up later with the\\n\\t *      `initializeSharesContractAddressIfRequired` function\\n\\t * @param _paymentToken ERC1363 payment token to bind to, optional (can be zero address),\\n\\t *      zero address means distributor works with the plain ETH\\n\\t */\\n\\tfunction postConstruct(address _owner, address _sharesContractAddress, address _paymentToken) public initializer {\\n\\t\\t// execute parent initializer(s)\\n\\t\\t_postConstruct(_owner);\\n\\n\\t\\tsharesContractAddress = _sharesContractAddress;\\n\\t\\tpaymentToken = _paymentToken;\\n\\t}\\n\\n\\t/**\\n\\t * @notice Sets the TradeableShares contract to bind the distributor to\\n\\t *\\n\\t * @dev TradeableShares contract can be set only once; fails if it is already set\\n\\t * @param _sharesContractAddress TradeableShares contract to bind the distributor to\\n\\t */\\n\\tfunction initializeSharesContractAddressIfRequired(address _sharesContractAddress) public {\\n\\t\\t// check the address is not yet set\\n\\t\\trequire(sharesContractAddress == address(0) && _sharesContractAddress != address(0), \\\"already initialized\\\");\\n\\n\\t\\t// set the TradeableShares contract address\\n\\t\\tsharesContractAddress = _sharesContractAddress;\\n\\t}\\n\\n\\t/**\\n\\t * @inheritdoc HoldersRewardsDistributor\\n\\t */\\n\\tfunction getPaymentToken() public view returns (address) {\\n\\t\\treturn paymentToken;\\n\\t}\\n\\n\\t/**\\n\\t * @dev Executed when TradeableShares contract notifies about shares bought event\\n\\t */\\n\\tfunction __sharesBought(address _buyer, uint256 _amountBought) private {\\n\\t\\tUserInfo storage userDetail = userInfo[_buyer];\\n\\t\\tif(userDetail.shares > 0) {\\n\\t\\t\\t// calculated pending reward if any\\n\\t\\t\\tuint256 pending = ((userDetail.shares * accRewardPerShare) / 1e18) - userDetail.rewardDebt;\\n\\t\\t\\tif(pending > 0) {\\n\\t\\t\\t\\t// update unclaimed amount\\n\\t\\t\\t\\tuserDetail.unclaimedAmount += pending;\\n\\t\\t\\t}\\n\\t\\t}\\n\\n\\t\\t// update state variables\\n\\t\\tuserDetail.shares += _amountBought;\\n\\t\\ttotalShares += _amountBought;\\n\\t\\tuserDetail.rewardDebt = (userDetail.shares * accRewardPerShare) / 1e18;\\n\\t}\\n\\n\\t/**\\n\\t * @dev Executed when TradeableShares contract notifies about shares sold event\\n\\t */\\n\\tfunction __sharesSold(address _seller, uint256 _amountSold) private {\\n\\t\\trequire(_amountSold <= userInfo[_seller].shares, \\\"amount must be <= registered amount\\\");\\n\\n\\t\\tUserInfo storage userDetail = userInfo[_seller];\\n\\t\\t// calculated pending reward if any\\n\\t\\tuint256 pending = ((userDetail.shares * accRewardPerShare) / 1e18) - userDetail.rewardDebt;\\n\\t\\tif(pending > 0) {\\n\\t\\t\\t// update unclaimed amount\\n\\t\\t\\tuserDetail.unclaimedAmount += pending;\\n\\t\\t}\\n\\n\\t\\t// update state variables\\n\\t\\tuserDetail.shares = userDetail.shares - _amountSold;\\n\\t\\ttotalShares = totalShares - _amountSold;\\n\\t\\tuserDetail.rewardDebt = (userDetail.shares * accRewardPerShare) / 1e18;\\n\\t}\\n\\n\\t/**\\n\\t * @dev Executed when TradeableShares contract send the fees;\\n\\t * @dev The very first tranche of the fees might be ignored if it is done by the issuer\\n\\t */\\n\\tfunction __accept(uint256 _feeAmount) private {\\n\\t\\t// check the state can accept the changes\\n\\t\\tif(_feeAmount == 0 || totalShares == 0) {\\n\\t\\t\\treturn;\\n\\t\\t}\\n\\n\\t\\t// update state variables\\n\\t\\taccRewardPerShare += (_feeAmount * 1e18) / totalShares;\\n\\n\\t\\t// emit an event\\n\\t\\temit FeeReceived(_feeAmount);\\n\\t}\\n\\n\\n\\t/**\\n\\t * @dev Processes the fee, and the sync message\\n\\t *\\n\\t * @dev Takes care about the encoded bytes data containing trader address, trade operation type,\\n\\t *      and amount of the shares bought\\n\\t *\\n\\t * @dev Format: address | bool | uint256\\n\\t */\\n\\tfunction __parseTrade(uint256 _feeAmount, bytes memory data) private {\\n\\t\\tif(totalShares == 0) {\\n\\t\\t\\t__parseFirstTrade(_feeAmount, data);\\n\\t\\t}\\n\\t\\telse {\\n\\t\\t\\t__parseNextTrade(_feeAmount, data);\\n\\t\\t}\\n\\t}\\n\\n\\t/**\\n\\t * @dev Processes the very first fee, and the sync message\\n\\t */\\n\\tfunction __parseFirstTrade(uint256 _feeAmount, bytes memory data) private {\\n\\t\\t// the very first sync message must not be empty\\n\\t\\trequire(data.length != 0, \\\"sync message expected\\\");\\n\\n\\t\\t// verify message length\\n\\t\\trequire(data.length == 96, \\\"malformed sync message\\\");\\n\\n\\t\\t// decode the sync message\\n\\t\\t(address trader, bool isBuy, uint256 sharesAmount) = abi.decode(data, (address, bool, uint256));\\n\\t\\t// the very first operation can be buy only, and cannot be zero\\n\\t\\trequire(isBuy && sharesAmount >= 1, \\\"invalid state\\\");\\n\\n\\t\\t// init: notify about the first share\\n\\t\\t__sharesBought(trader, 1);\\n\\t\\t// to save the gas execute the rest of the functions only if there is a need\\n\\t\\tif(sharesAmount > 1) {\\n\\t\\t\\t// process the fee\\n\\t\\t\\t__accept(_feeAmount);\\n\\t\\t\\t// notify about the remaining shares\\n\\t\\t\\t__sharesBought(trader, sharesAmount - 1);\\n\\t\\t}\\n\\n\\t\\t// emit an event\\n\\t\\temit SharesTraded(trader, true, sharesAmount);\\n\\t}\\n\\n\\t/**\\n\\t * @dev Processes not the very first fee, and the sync message\\n\\t */\\n\\tfunction __parseNextTrade(uint256 _feeAmount, bytes memory data) private {\\n\\t\\t// process the fee\\n\\t\\t__accept(_feeAmount);\\n\\n\\t\\t// if the sync message is empty, we're done\\n\\t\\tif(data.length == 0) {\\n\\t\\t\\treturn;\\n\\t\\t}\\n\\n\\t\\t// verify message length\\n\\t\\trequire(data.length == 96, \\\"malformed sync message\\\");\\n\\n\\t\\t// decode the sync message\\n\\t\\t(address trader, bool isBuy, uint256 sharesAmount) = abi.decode(data, (address, bool, uint256));\\n\\t\\tif(isBuy) {\\n\\t\\t\\t// notify buy\\n\\t\\t\\t__sharesBought(trader, sharesAmount);\\n\\t\\t}\\n\\t\\telse {\\n\\t\\t\\t// notify sell\\n\\t\\t\\t__sharesSold(trader, sharesAmount);\\n\\t\\t}\\n\\n\\t\\t// emit an event\\n\\t\\temit SharesTraded(trader, isBuy, sharesAmount);\\n\\t}\\n\\n\\t/**\\n\\t * @inheritdoc HoldersRewardsDistributor\\n\\t */\\n\\tfunction claimTheReward() public {\\n\\t\\tuint256 claimableAmount = pendingReward(msg.sender);\\n\\t\\trequire(claimableAmount > 0, \\\"Nothing to claim\\\");\\n\\n\\t\\tUserInfo storage userDetail = userInfo[msg.sender];\\n\\t\\t// update state variable\\n\\t\\tuserDetail.unclaimedAmount = 0;\\n\\t\\tuserDetail.claimedAmount += claimableAmount;\\n\\t\\tuserDetail.rewardDebt = (userDetail.shares * accRewardPerShare) / 1e18;\\n\\n\\t\\t// transfer reward\\n\\t\\tif(paymentToken == address(0)) {\\n\\t\\t\\tTransfers.transfer(payable(msg.sender), claimableAmount);\\n\\t\\t}\\n\\t\\telse {\\n\\t\\t\\trequire(ERC20(paymentToken).transfer(msg.sender, claimableAmount));\\n\\t\\t}\\n\\n\\t\\t// emit an event\\n\\t\\temit RewardClaimed(msg.sender, claimableAmount);\\n\\t}\\n\\n\\t/**\\n\\t * @inheritdoc HoldersRewardsDistributor\\n\\t */\\n\\tfunction pendingReward(address holder) public view returns (uint256) {\\n\\t\\t// read user details and calculate how much we own\\n\\t\\tUserInfo memory userDetail = userInfo[holder];\\n\\t\\tuint256 pending = userDetail.unclaimedAmount + userDetail.shares * accRewardPerShare / 1e18 - userDetail.rewardDebt;\\n\\n\\t\\t// get an idea of how much we have on the balance\\n\\t\\tuint256 available = paymentToken == address(0)? address(this).balance: ERC20(paymentToken).balanceOf(address(this));\\n\\n\\t\\t// we allow up to 1 gwei cumulative discrepancy due to rounding errors\\n\\t\\trequire(pending < 1_000_000_000 + available, \\\"discrepancy error\\\");\\n\\n\\t\\t// return the amount we're actually able to return in `claimTheReward`\\n\\t\\treturn pending > available? available: pending;\\n\\t}\\n\\n\\t/**\\n\\t * @inheritdoc ERC1363Receiver\\n\\t *\\n\\t * @notice Anyone can send some additional rewards \\u2013 just use empty `data` for a callback\\n\\t *\\n\\t * @dev Non-empty `data` executes trade updates and therefore is restricted to be sent only\\n\\t *      by `sharesContractAddress`\\n\\t */\\n\\tfunction onTransferReceived(address operator, address, uint256 value, bytes memory data) public returns (bytes4) {\\n\\t\\trequire(msg.sender == paymentToken, \\\"received event from wrong token\\\");\\n\\t\\trequire(operator == sharesContractAddress, \\\"not allowed\\\");\\n\\n\\t\\t__parseTrade(value, data);\\n\\t\\treturn ERC1363Receiver(this).onTransferReceived.selector;\\n\\t}\\n\\n\\t/**\\n\\t * @notice Receive is public. Anyone can send some additional rewards ;)\\n\\t */\\n\\treceive() external payable {\\n\\t\\trequire(paymentToken == address(0), \\\"not allowed\\\");\\n\\t\\t__parseTrade(msg.value, bytes(\\\"\\\"));\\n\\t}\\n\\n\\t/**\\n\\t * @dev Fallback executes trade updates and therefore is restricted to be executed only by `sharesContractAddress`\\n\\t *\\n\\t * @notice If you want do donate some rewards - use `receive()`\\n\\t */\\n\\tfallback() external payable {\\n\\t\\trequire(paymentToken == address(0), \\\"not an ETH reward distributor\\\");\\n\\n\\t\\trequire(msg.sender == sharesContractAddress, \\\"not allowed\\\");\\n\\t\\t__parseTrade(msg.value, msg.data);\\n\\t}\\n}\\n\",\"keccak256\":\"0xe2772adbcfe9126299fb2e9b03710e64b2971fdbf36712d026a59420a31e1f98\",\"license\":\"MIT\"},\"contracts/interfaces/ERC1363Spec.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.4;\\n\\nimport \\\"./ERC20Spec.sol\\\";\\nimport \\\"./ERC165Spec.sol\\\";\\n\\n/**\\n * @title ERC1363 Interface\\n *\\n * @dev Interface defining a ERC1363 Payable Token contract.\\n *      Implementing contracts MUST implement the ERC1363 interface as well as the ERC20 and ERC165 interfaces.\\n */\\ninterface ERC1363 is ERC20, ERC165  {\\n\\t/*\\n\\t * Note: the ERC-165 identifier for this interface is 0xb0202a11.\\n\\t * 0xb0202a11 ===\\n\\t *   bytes4(keccak256('transferAndCall(address,uint256)')) ^\\n\\t *   bytes4(keccak256('transferAndCall(address,uint256,bytes)')) ^\\n\\t *   bytes4(keccak256('transferFromAndCall(address,address,uint256)')) ^\\n\\t *   bytes4(keccak256('transferFromAndCall(address,address,uint256,bytes)')) ^\\n\\t *   bytes4(keccak256('approveAndCall(address,uint256)')) ^\\n\\t *   bytes4(keccak256('approveAndCall(address,uint256,bytes)'))\\n\\t */\\n\\n\\t/**\\n\\t * @notice Transfer tokens from `msg.sender` to another address and then call `onTransferReceived` on receiver\\n\\t * @param to address The address which you want to transfer to\\n\\t * @param value uint256 The amount of tokens to be transferred\\n\\t * @return true unless throwing\\n\\t */\\n\\tfunction transferAndCall(address to, uint256 value) external returns (bool);\\n\\n\\t/**\\n\\t * @notice Transfer tokens from `msg.sender` to another address and then call `onTransferReceived` on receiver\\n\\t * @param to address The address which you want to transfer to\\n\\t * @param value uint256 The amount of tokens to be transferred\\n\\t * @param data bytes Additional data with no specified format, sent in call to `to`\\n\\t * @return true unless throwing\\n\\t */\\n\\tfunction transferAndCall(address to, uint256 value, bytes memory data) external returns (bool);\\n\\n\\t/**\\n\\t * @notice Transfer tokens from one address to another and then call `onTransferReceived` on receiver\\n\\t * @param from address The address which you want to send tokens from\\n\\t * @param to address The address which you want to transfer to\\n\\t * @param value uint256 The amount of tokens to be transferred\\n\\t * @return true unless throwing\\n\\t */\\n\\tfunction transferFromAndCall(address from, address to, uint256 value) external returns (bool);\\n\\n\\n\\t/**\\n\\t * @notice Transfer tokens from one address to another and then call `onTransferReceived` on receiver\\n\\t * @param from address The address which you want to send tokens from\\n\\t * @param to address The address which you want to transfer to\\n\\t * @param value uint256 The amount of tokens to be transferred\\n\\t * @param data bytes Additional data with no specified format, sent in call to `to`\\n\\t * @return true unless throwing\\n\\t */\\n\\tfunction transferFromAndCall(address from, address to, uint256 value, bytes memory data) external returns (bool);\\n\\n\\t/**\\n\\t * @notice Approve the passed address to spend the specified amount of tokens on behalf of msg.sender\\n\\t * and then call `onApprovalReceived` on spender.\\n\\t * @param spender address The address which will spend the funds\\n\\t * @param value uint256 The amount of tokens to be spent\\n\\t */\\n\\tfunction approveAndCall(address spender, uint256 value) external returns (bool);\\n\\n\\t/**\\n\\t * @notice Approve the passed address to spend the specified amount of tokens on behalf of msg.sender\\n\\t * and then call `onApprovalReceived` on spender.\\n\\t * @param spender address The address which will spend the funds\\n\\t * @param value uint256 The amount of tokens to be spent\\n\\t * @param data bytes Additional data with no specified format, sent in call to `spender`\\n\\t */\\n\\tfunction approveAndCall(address spender, uint256 value, bytes memory data) external returns (bool);\\n}\\n\\n/**\\n * @title ERC1363Receiver Interface\\n *\\n * @dev Interface for any contract that wants to support `transferAndCall` or `transferFromAndCall`\\n *      from ERC1363 token contracts.\\n */\\ninterface ERC1363Receiver {\\n\\t/*\\n\\t * Note: the ERC-165 identifier for this interface is 0x88a7ca5c.\\n\\t * 0x88a7ca5c === bytes4(keccak256(\\\"onTransferReceived(address,address,uint256,bytes)\\\"))\\n\\t */\\n\\n\\t/**\\n\\t * @notice Handle the receipt of ERC1363 tokens\\n\\t *\\n\\t * @dev Any ERC1363 smart contract calls this function on the recipient\\n\\t *      after a `transfer` or a `transferFrom`. This function MAY throw to revert and reject the\\n\\t *      transfer. Return of other than the magic value MUST result in the\\n\\t *      transaction being reverted.\\n\\t *      Note: the token contract address is always the message sender.\\n\\t *\\n\\t * @param operator address The address which called `transferAndCall` or `transferFromAndCall` function\\n\\t * @param from address The address which are token transferred from\\n\\t * @param value uint256 The amount of tokens transferred\\n\\t * @param data bytes Additional data with no specified format\\n\\t * @return `bytes4(keccak256(\\\"onTransferReceived(address,address,uint256,bytes)\\\"))`\\n\\t *      unless throwing\\n\\t */\\n\\tfunction onTransferReceived(address operator, address from, uint256 value, bytes memory data) external returns (bytes4);\\n}\\n\\n/**\\n * @title ERC1363Spender Interface\\n *\\n * @dev Interface for any contract that wants to support `approveAndCall`\\n *      from ERC1363 token contracts.\\n */\\ninterface ERC1363Spender {\\n\\t/*\\n\\t * Note: the ERC-165 identifier for this interface is 0x7b04a2d0.\\n\\t * 0x7b04a2d0 === bytes4(keccak256(\\\"onApprovalReceived(address,uint256,bytes)\\\"))\\n\\t */\\n\\n\\t/**\\n\\t * @notice Handle the approval of ERC1363 tokens\\n\\t *\\n\\t * @dev Any ERC1363 smart contract calls this function on the recipient\\n\\t *      after an `approve`. This function MAY throw to revert and reject the\\n\\t *      approval. Return of other than the magic value MUST result in the\\n\\t *      transaction being reverted.\\n\\t *      Note: the token contract address is always the message sender.\\n\\t *\\n\\t * @param owner address The address which called `approveAndCall` function\\n\\t * @param value uint256 The amount of tokens to be spent\\n\\t * @param data bytes Additional data with no specified format\\n\\t * @return `bytes4(keccak256(\\\"onApprovalReceived(address,uint256,bytes)\\\"))`\\n\\t *      unless throwing\\n\\t */\\n\\tfunction onApprovalReceived(address owner, uint256 value, bytes memory data) external returns (bytes4);\\n}\\n\",\"keccak256\":\"0x5a9800736f8d59f69ddeb59babcc71ec0ba439150ea1ecac1f4c30d8e4a98d5e\",\"license\":\"MIT\"},\"contracts/interfaces/ERC165Spec.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.4;\\n\\n/**\\n * @title ERC-165 Standard Interface Detection\\n *\\n * @dev Interface of the ERC165 standard, as defined in the\\n *       https://eips.ethereum.org/EIPS/eip-165[EIP].\\n *\\n * @dev Implementers can declare support of contract interfaces,\\n *      which can then be queried by others.\\n *\\n * @author Christian Reitwie\\u00dfner, Nick Johnson, Fabian Vogelsteller, Jordi Baylina, Konrad Feldmeier, William Entriken\\n */\\ninterface ERC165 {\\n\\t/**\\n\\t * @notice Query if a contract implements an interface\\n\\t *\\n\\t * @dev Interface identification is specified in ERC-165.\\n\\t *      This function uses less than 30,000 gas.\\n\\t *\\n\\t * @param interfaceID The interface identifier, as specified in ERC-165\\n\\t * @return `true` if the contract implements `interfaceID` and\\n\\t *      `interfaceID` is not 0xffffffff, `false` otherwise\\n\\t */\\n\\tfunction supportsInterface(bytes4 interfaceID) external view returns (bool);\\n}\\n\",\"keccak256\":\"0x9b8e0a0ee2ddff1014108266f62a95dab3f76f08deba2e6177ec2ed251128f9d\",\"license\":\"MIT\"},\"contracts/interfaces/ERC20Spec.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.4;\\n\\n/**\\n * @title EIP-20: ERC-20 Token Standard\\n *\\n * @notice The ERC-20 (Ethereum Request for Comments 20), proposed by Fabian Vogelsteller in November 2015,\\n *      is a Token Standard that implements an API for tokens within Smart Contracts.\\n *\\n * @notice It provides functionalities like to transfer tokens from one account to another,\\n *      to get the current token balance of an account and also the total supply of the token available on the network.\\n *      Besides these it also has some other functionalities like to approve that an amount of\\n *      token from an account can be spent by a third party account.\\n *\\n * @notice If a Smart Contract implements the following methods and events it can be called an ERC-20 Token\\n *      Contract and, once deployed, it will be responsible to keep track of the created tokens on Ethereum.\\n *\\n * @notice See https://ethereum.org/en/developers/docs/standards/tokens/erc-20/\\n * @notice See https://eips.ethereum.org/EIPS/eip-20\\n */\\ninterface ERC20 {\\n\\t/**\\n\\t * @dev Fired in transfer(), transferFrom() to indicate that token transfer happened\\n\\t *\\n\\t * @param from an address tokens were consumed from\\n\\t * @param to an address tokens were sent to\\n\\t * @param value number of tokens transferred\\n\\t */\\n\\tevent Transfer(address indexed from, address indexed to, uint256 value);\\n\\n\\t/**\\n\\t * @dev Fired in approve() to indicate an approval event happened\\n\\t *\\n\\t * @param owner an address which granted a permission to transfer\\n\\t *      tokens on its behalf\\n\\t * @param spender an address which received a permission to transfer\\n\\t *      tokens on behalf of the owner `_owner`\\n\\t * @param value amount of tokens granted to transfer on behalf\\n\\t */\\n\\tevent Approval(address indexed owner, address indexed spender, uint256 value);\\n\\n\\t/**\\n\\t * @return name of the token (ex.: USD Coin)\\n\\t */\\n\\t// OPTIONAL - This method can be used to improve usability,\\n\\t// but interfaces and other contracts MUST NOT expect these values to be present.\\n\\t// function name() external view returns (string memory);\\n\\n\\t/**\\n\\t * @return symbol of the token (ex.: USDC)\\n\\t */\\n\\t// OPTIONAL - This method can be used to improve usability,\\n\\t// but interfaces and other contracts MUST NOT expect these values to be present.\\n\\t// function symbol() external view returns (string memory);\\n\\n\\t/**\\n\\t * @dev Returns the number of decimals used to get its user representation.\\n\\t *      For example, if `decimals` equals `2`, a balance of `505` tokens should\\n\\t *      be displayed to a user as `5,05` (`505 / 10 ** 2`).\\n\\t *\\n\\t * @dev Tokens usually opt for a value of 18, imitating the relationship between\\n\\t *      Ether and Wei. This is the value {ERC20} uses, unless this function is\\n\\t *      overridden;\\n\\t *\\n\\t * @dev NOTE: This information is only used for _display_ purposes: it in\\n\\t *      no way affects any of the arithmetic of the contract, including\\n\\t *      {IERC20-balanceOf} and {IERC20-transfer}.\\n\\t *\\n\\t * @return token decimals\\n\\t */\\n\\t// OPTIONAL - This method can be used to improve usability,\\n\\t// but interfaces and other contracts MUST NOT expect these values to be present.\\n\\t// function decimals() external view returns (uint8);\\n\\n\\t/**\\n\\t * @return the amount of tokens in existence\\n\\t */\\n\\tfunction totalSupply() external view returns (uint256);\\n\\n\\t/**\\n\\t * @notice Gets the balance of a particular address\\n\\t *\\n\\t * @param _owner the address to query the the balance for\\n\\t * @return balance an amount of tokens owned by the address specified\\n\\t */\\n\\tfunction balanceOf(address _owner) external view returns (uint256 balance);\\n\\n\\t/**\\n\\t * @notice Transfers some tokens to an external address or a smart contract\\n\\t *\\n\\t * @dev Called by token owner (an address which has a\\n\\t *      positive token balance tracked by this smart contract)\\n\\t * @dev Throws on any error like\\n\\t *      * insufficient token balance or\\n\\t *      * incorrect `_to` address:\\n\\t *          * zero address or\\n\\t *          * self address or\\n\\t *          * smart contract which doesn't support ERC20\\n\\t *\\n\\t * @param _to an address to transfer tokens to,\\n\\t *      must be either an external address or a smart contract,\\n\\t *      compliant with the ERC20 standard\\n\\t * @param _value amount of tokens to be transferred,, zero\\n\\t *      value is allowed\\n\\t * @return success true on success, throws otherwise\\n\\t */\\n\\tfunction transfer(address _to, uint256 _value) external returns (bool success);\\n\\n\\t/**\\n\\t * @notice Transfers some tokens on behalf of address `_from' (token owner)\\n\\t *      to some other address `_to`\\n\\t *\\n\\t * @dev Called by token owner on his own or approved address,\\n\\t *      an address approved earlier by token owner to\\n\\t *      transfer some amount of tokens on its behalf\\n\\t * @dev Throws on any error like\\n\\t *      * insufficient token balance or\\n\\t *      * incorrect `_to` address:\\n\\t *          * zero address or\\n\\t *          * same as `_from` address (self transfer)\\n\\t *          * smart contract which doesn't support ERC20\\n\\t *\\n\\t * @param _from token owner which approved caller (transaction sender)\\n\\t *      to transfer `_value` of tokens on its behalf\\n\\t * @param _to an address to transfer tokens to,\\n\\t *      must be either an external address or a smart contract,\\n\\t *      compliant with the ERC20 standard\\n\\t * @param _value amount of tokens to be transferred,, zero\\n\\t *      value is allowed\\n\\t * @return success true on success, throws otherwise\\n\\t */\\n\\tfunction transferFrom(address _from, address _to, uint256 _value) external returns (bool success);\\n\\n\\t/**\\n\\t * @notice Approves address called `_spender` to transfer some amount\\n\\t *      of tokens on behalf of the owner (transaction sender)\\n\\t *\\n\\t * @dev Transaction sender must not necessarily own any tokens to grant the permission\\n\\t *\\n\\t * @param _spender an address approved by the caller (token owner)\\n\\t *      to spend some tokens on its behalf\\n\\t * @param _value an amount of tokens spender `_spender` is allowed to\\n\\t *      transfer on behalf of the token owner\\n\\t * @return success true on success, throws otherwise\\n\\t */\\n\\tfunction approve(address _spender, uint256 _value) external returns (bool success);\\n\\n\\t/**\\n\\t * @notice Returns the amount which _spender is still allowed to withdraw from _owner.\\n\\t *\\n\\t * @dev A function to check an amount of tokens owner approved\\n\\t *      to transfer on its behalf by some other address called \\\"spender\\\"\\n\\t *\\n\\t * @param _owner an address which approves transferring some tokens on its behalf\\n\\t * @param _spender an address approved to transfer some tokens on behalf\\n\\t * @return remaining an amount of tokens approved address `_spender` can transfer on behalf\\n\\t *      of token owner `_owner`\\n\\t */\\n\\tfunction allowance(address _owner, address _spender) external view returns (uint256 remaining);\\n}\\n\\n/**\\n * @title Mintable/burnable ERC20 Extension\\n *\\n * @notice Adds mint/burn functions to ERC20 interface, these functions\\n *      are usually present in ERC20 implementations, but these become\\n *      a must for the bridged tokens in L2 since the bridge on L2\\n *      needs to have a way to mint tokens deposited from L1 to L2\\n *      and to burn tokens to be withdrawn from L2 to L1\\n */\\ninterface MintableBurnableERC20 is ERC20 {\\n\\t/**\\n\\t * @dev Mints (creates) some tokens to address specified\\n\\t * @dev The value specified is treated as is without taking\\n\\t *      into account what `decimals` value is\\n\\t *\\n\\t * @param _to an address to mint tokens to\\n\\t * @param _value an amount of tokens to mint (create)\\n\\t */\\n\\tfunction mint(address _to, uint256 _value) external;\\n\\n\\t/**\\n\\t * @dev Burns (destroys) some tokens from the address specified\\n\\t *\\n\\t * @dev The value specified is treated as is without taking\\n\\t *      into account what `decimals` value is\\n\\t *\\n\\t * @param _from an address to burn some tokens from\\n\\t * @param _value an amount of tokens to burn (destroy)\\n\\t */\\n\\tfunction burn(address _from, uint256 _value) external;\\n}\\n\",\"keccak256\":\"0xb07fc5b34a9814eac569e73cb23d352e0547b5736e09c9e50234bc23344144e1\",\"license\":\"MIT\"},\"contracts/utils/InitializableAccessControl.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.2;\\n\\nimport \\\"@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol\\\";\\n\\n/**\\n * @title Initializable Role-based Access Control (RBAC) // ERC1967Proxy\\n *\\n * @notice Access control smart contract provides an API to check\\n *      if a specific operation is permitted globally and/or\\n *      if a particular user has a permission to execute it.\\n *\\n * @notice This contract is inherited by other contracts requiring the role-based access control (RBAC)\\n *      protection for the restricted access functions\\n *\\n * @notice It deals with two main entities: features and roles.\\n *\\n * @notice Features are designed to be used to enable/disable public functions\\n *      of the smart contract (used by a wide audience).\\n * @notice User roles are designed to control the access to restricted functions\\n *      of the smart contract (used by a limited set of maintainers).\\n *\\n * @notice Terms \\\"role\\\", \\\"permissions\\\" and \\\"set of permissions\\\" have equal meaning\\n *      in the documentation text and may be used interchangeably.\\n * @notice Terms \\\"permission\\\", \\\"single permission\\\" implies only one permission bit set.\\n *\\n * @notice Access manager is a special role which allows to grant/revoke other roles.\\n *      Access managers can only grant/revoke permissions which they have themselves.\\n *      As an example, access manager with no other roles set can only grant/revoke its own\\n *      access manager permission and nothing else.\\n *\\n * @notice Access manager permission should be treated carefully, as a super admin permission:\\n *      Access manager with even no other permission can interfere with another account by\\n *      granting own access manager permission to it and effectively creating more powerful\\n *      permission set than its own.\\n *\\n * @dev Both current and OpenZeppelin AccessControl implementations feature a similar API\\n *      to check/know \\\"who is allowed to do this thing\\\".\\n * @dev Zeppelin implementation is more flexible:\\n *      - it allows setting unlimited number of roles, while current is limited to 256 different roles\\n *      - it allows setting an admin for each role, while current allows having only one global admin\\n * @dev Current implementation is more lightweight:\\n *      - it uses only 1 bit per role, while Zeppelin uses 256 bits\\n *      - it allows setting up to 256 roles at once, in a single transaction, while Zeppelin allows\\n *        setting only one role in a single transaction\\n *\\n * @dev This smart contract is designed to be inherited by other\\n *      smart contracts which require access control management capabilities.\\n *\\n * @dev Access manager permission has a bit 255 set.\\n *      This bit must not be used by inheriting contracts for any other permissions/features.\\n *\\n * @dev This is an initializable version of the RBAC, based on Zeppelin implementation,\\n *      it can be used for ERC1967 proxies, as well as for EIP-1167 minimal proxies\\n *      see https://docs.openzeppelin.com/contracts/4.x/upgradeable\\n *      see https://docs.openzeppelin.com/contracts/4.x/api/proxy#UUPSUpgradeable\\n *      see https://forum.openzeppelin.com/t/uups-proxies-tutorial-solidity-javascript/7786\\n *      see https://eips.ethereum.org/EIPS/eip-1167\\n *      see https://docs.openzeppelin.com/contracts/4.x/api/proxy#Clones\\n */\\nabstract contract InitializableAccessControl is Initializable {\\n\\t/**\\n\\t * @dev Privileged addresses with defined roles/permissions\\n\\t * @dev In the context of ERC20/ERC721 tokens these can be permissions to\\n\\t *      allow minting or burning tokens, transferring on behalf and so on\\n\\t *\\n\\t * @dev Maps user address to the permissions bitmask (role), where each bit\\n\\t *      represents a permission\\n\\t * @dev Bitmask 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF\\n\\t *      represents all possible permissions\\n\\t * @dev 'This' address mapping represents global features of the smart contract\\n\\t *\\n\\t * @dev We keep the mapping private to prevent direct writes to it from the inheriting\\n\\t *      contracts, `getRole()` and `updateRole()` functions should be used instead\\n\\t */\\n\\tmapping(address => uint256) private userRoles;\\n\\n\\t/**\\n\\t * @dev Empty reserved space in storage. The size of the __gap array is calculated so that\\n\\t *      the amount of storage used by a contract always adds up to the 50.\\n\\t *      See https://docs.openzeppelin.com/contracts/4.x/upgradeable#storage_gaps\\n\\t */\\n\\tuint256[49] private __gap;\\n\\n\\t/**\\n\\t * @notice Access manager is responsible for assigning the roles to users,\\n\\t *      enabling/disabling global features of the smart contract\\n\\t * @notice Access manager can add, remove and update user roles,\\n\\t *      remove and update global features\\n\\t *\\n\\t * @dev Role ROLE_ACCESS_MANAGER allows modifying user roles and global features\\n\\t * @dev Role ROLE_ACCESS_MANAGER has single bit at position 255 enabled\\n\\t */\\n\\tuint256 public constant ROLE_ACCESS_MANAGER = 0x8000000000000000000000000000000000000000000000000000000000000000;\\n\\n\\t/**\\n\\t * @notice Upgrade manager is responsible for smart contract upgrades,\\n\\t *      see https://docs.openzeppelin.com/contracts/4.x/api/proxy#UUPSUpgradeable\\n\\t *      see https://docs.openzeppelin.com/contracts/4.x/upgradeable\\n\\t *\\n\\t * @dev Role ROLE_UPGRADE_MANAGER allows passing the _authorizeUpgrade() check\\n\\t * @dev Role ROLE_UPGRADE_MANAGER has single bit at position 254 enabled\\n\\t */\\n\\tuint256 public constant ROLE_UPGRADE_MANAGER = 0x4000000000000000000000000000000000000000000000000000000000000000;\\n\\n\\t/**\\n\\t * @dev Bitmask representing all the possible permissions (super admin role)\\n\\t * @dev Has all the bits are enabled (2^256 - 1 value)\\n\\t */\\n\\tuint256 private constant FULL_PRIVILEGES_MASK = type(uint256).max; // before 0.8.0: uint256(-1) overflows to 0xFFFF...\\n\\n\\t/**\\n\\t * @dev Fired in updateRole() and updateFeatures()\\n\\t *\\n\\t * @param operator address which was granted/revoked permissions\\n\\t * @param requested permissions requested\\n\\t * @param assigned permissions effectively set\\n\\t */\\n\\tevent RoleUpdated(address indexed operator, uint256 requested, uint256 assigned);\\n\\n\\t/**\\n\\t * @notice Function modifier making a function defined as public behave as restricted\\n\\t *      (so that only a pre-configured set of accounts can execute it)\\n\\t *\\n\\t * @param role the role transaction executor is required to have;\\n\\t *      the function throws an \\\"access denied\\\" exception if this condition is not met\\n\\t */\\n\\tmodifier restrictedTo(uint256 role) {\\n\\t\\t// verify the access permission\\n\\t\\trequire(isSenderInRole(role), \\\"access denied\\\");\\n\\n\\t\\t// execute the rest of the function\\n\\t\\t_;\\n\\t}\\n\\n\\t/**\\n\\t * @dev Creates/deploys the ACL implementation to be used in a proxy\\n\\t *\\n\\t * @dev Note:\\n\\t *      the implementation is already initialized and\\n\\t *      `_postConstruct` is not executable on the implementation\\n\\t *      `_postConstruct` is still available in the context of a proxy\\n\\t *      and should be executed on the proxy deployment (in the same tx)\\n\\t */\\n\\t // constructor() initializer {}\\n\\n\\t/**\\n\\t * @dev Contract initializer, sets the contract owner to have full privileges\\n\\t *\\n\\t * @dev Can be executed only once, reverts when executed second time\\n\\t *\\n\\t * @dev IMPORTANT:\\n\\t *      this function SHOULD be executed during proxy deployment (in the same transaction)\\n\\t *\\n\\t * @param _owner smart contract owner having full privileges\\n\\t */\\n\\tfunction _postConstruct(address _owner) internal virtual onlyInitializing {\\n\\t\\t// grant owner full privileges\\n\\t\\t__setRole(_owner, FULL_PRIVILEGES_MASK, FULL_PRIVILEGES_MASK);\\n\\t}\\n\\n\\t/**\\n\\t * @dev Highest version that has been initialized.\\n\\t *      Non-zero value means contract was already initialized.\\n\\t * @dev see {Initializable}, {reinitializer}.\\n\\t *\\n\\t * @return highest version that has been initialized\\n\\t */\\n/*\\n\\tfunction getInitializedVersion() public view returns(uint64) {\\n\\t\\t// delegate to `_getInitializedVersion`\\n\\t\\treturn _getInitializedVersion();\\n\\t}\\n*/\\n\\n\\t/**\\n\\t * @notice Retrieves globally set of features enabled\\n\\t *\\n\\t * @dev Effectively reads userRoles role for the contract itself\\n\\t *\\n\\t * @return 256-bit bitmask of the features enabled\\n\\t */\\n\\tfunction features() public view returns (uint256) {\\n\\t\\t// features are stored in 'this' address mapping of `userRoles`\\n\\t\\treturn getRole(address(this));\\n\\t}\\n\\n\\t/**\\n\\t * @notice Updates set of the globally enabled features (`features`),\\n\\t *      taking into account sender's permissions\\n\\t *\\n\\t * @dev Requires transaction sender to have `ROLE_ACCESS_MANAGER` permission\\n\\t * @dev Function is left for backward compatibility with older versions\\n\\t *\\n\\t * @param _mask bitmask representing a set of features to enable/disable\\n\\t */\\n\\tfunction updateFeatures(uint256 _mask) public {\\n\\t\\t// delegate call to `updateRole`\\n\\t\\tupdateRole(address(this), _mask);\\n\\t}\\n\\n\\t/**\\n\\t * @notice Reads the permissions (role) for a given user from the `userRoles` mapping\\n\\t *      (privileged addresses with defined roles/permissions)\\n\\t * @notice In the context of ERC20/ERC721 tokens these can be permissions to\\n\\t *      allow minting or burning tokens, transferring on behalf and so on\\n\\t *\\n\\t * @dev Having a simple getter instead of making the mapping public\\n\\t *      allows enforcing the encapsulation of the mapping and protects from\\n\\t *      writing to it directly in the inheriting smart contracts\\n\\t *\\n\\t * @param operator address of a user to read permissions for,\\n\\t *      or self address to read global features of the smart contract\\n\\t */\\n\\tfunction getRole(address operator) public view returns(uint256) {\\n\\t\\t// read the value from `userRoles` and return\\n\\t\\treturn userRoles[operator];\\n\\t}\\n\\n\\t/**\\n\\t * @notice Updates set of permissions (role) for a given user,\\n\\t *      taking into account sender's permissions.\\n\\t *\\n\\t * @dev Setting role to zero is equivalent to removing an all permissions\\n\\t * @dev Setting role to `FULL_PRIVILEGES_MASK` is equivalent to\\n\\t *      copying senders' permissions (role) to the user\\n\\t * @dev Requires transaction sender to have `ROLE_ACCESS_MANAGER` permission\\n\\t *\\n\\t * @param operator address of a user to alter permissions for,\\n\\t *       or self address to alter global features of the smart contract\\n\\t * @param role bitmask representing a set of permissions to\\n\\t *      enable/disable for a user specified\\n\\t */\\n\\tfunction updateRole(address operator, uint256 role) public {\\n\\t\\t// caller must have a permission to update user roles\\n\\t\\trequire(isSenderInRole(ROLE_ACCESS_MANAGER), \\\"access denied\\\");\\n\\n\\t\\t// evaluate the role and reassign it\\n\\t\\t__setRole(operator, role, _evaluateBy(msg.sender, getRole(operator), role));\\n\\t}\\n\\n\\t/**\\n\\t * @notice Determines the permission bitmask an operator can set on the\\n\\t *      target permission set\\n\\t * @notice Used to calculate the permission bitmask to be set when requested\\n\\t *     in `updateRole` and `updateFeatures` functions\\n\\t *\\n\\t * @dev Calculated based on:\\n\\t *      1) operator's own permission set read from userRoles[operator]\\n\\t *      2) target permission set - what is already set on the target\\n\\t *      3) desired permission set - what do we want set target to\\n\\t *\\n\\t * @dev Corner cases:\\n\\t *      1) Operator is super admin and its permission set is `FULL_PRIVILEGES_MASK`:\\n\\t *        `desired` bitset is returned regardless of the `target` permission set value\\n\\t *        (what operator sets is what they get)\\n\\t *      2) Operator with no permissions (zero bitset):\\n\\t *        `target` bitset is returned regardless of the `desired` value\\n\\t *        (operator has no authority and cannot modify anything)\\n\\t *\\n\\t * @dev Example:\\n\\t *      Consider an operator with the permissions bitmask     00001111\\n\\t *      is about to modify the target permission set          01010101\\n\\t *      Operator wants to set that permission set to          00110011\\n\\t *      Based on their role, an operator has the permissions\\n\\t *      to update only lowest 4 bits on the target, meaning that\\n\\t *      high 4 bits of the target set in this example is left\\n\\t *      unchanged and low 4 bits get changed as desired:      01010011\\n\\t *\\n\\t * @param operator address of the contract operator which is about to set the permissions\\n\\t * @param target input set of permissions to operator is going to modify\\n\\t * @param desired desired set of permissions operator would like to set\\n\\t * @return resulting set of permissions given operator will set\\n\\t */\\n\\tfunction _evaluateBy(address operator, uint256 target, uint256 desired) internal view returns (uint256) {\\n\\t\\t// read operator's permissions\\n\\t\\tuint256 p = getRole(operator);\\n\\n\\t\\t// taking into account operator's permissions,\\n\\t\\t// 1) enable the permissions desired on the `target`\\n\\t\\ttarget |= p & desired;\\n\\t\\t// 2) disable the permissions desired on the `target`\\n\\t\\ttarget &= FULL_PRIVILEGES_MASK ^ (p & (FULL_PRIVILEGES_MASK ^ desired));\\n\\n\\t\\t// return calculated result\\n\\t\\treturn target;\\n\\t}\\n\\n\\t/**\\n\\t * @notice Checks if requested set of features is enabled globally on the contract\\n\\t *\\n\\t * @param required set of features to check against\\n\\t * @return true if all the features requested are enabled, false otherwise\\n\\t */\\n\\tfunction isFeatureEnabled(uint256 required) public view returns (bool) {\\n\\t\\t// delegate call to `__hasRole`, passing `features` property\\n\\t\\treturn __hasRole(features(), required);\\n\\t}\\n\\n\\t/**\\n\\t * @notice Checks if transaction sender `msg.sender` has all the permissions required\\n\\t *\\n\\t * @dev Used in smart contracts only. Off-chain clients should use `isOperatorInRole`.\\n\\t *\\n\\t * @param required set of permissions (role) to check against\\n\\t * @return true if all the permissions requested are enabled, false otherwise\\n\\t */\\n\\tfunction isSenderInRole(uint256 required) public view returns (bool) {\\n\\t\\t// delegate call to `isOperatorInRole`, passing transaction sender\\n\\t\\treturn isOperatorInRole(msg.sender, required);\\n\\t}\\n\\n\\t/**\\n\\t * @notice Checks if operator has all the permissions (role) required\\n\\t *\\n\\t * @param operator address of the user to check role for\\n\\t * @param required set of permissions (role) to check\\n\\t * @return true if all the permissions requested are enabled, false otherwise\\n\\t */\\n\\tfunction isOperatorInRole(address operator, uint256 required) public view returns (bool) {\\n\\t\\t// delegate call to `__hasRole`, passing operator's permissions (role)\\n\\t\\treturn __hasRole(getRole(operator), required);\\n\\t}\\n\\n\\t/**\\n\\t * @dev Sets the `assignedRole` role to the operator, logs both `requestedRole` and `actualRole`\\n\\t *\\n\\t * @dev Unsafe:\\n\\t *      provides direct write access to `userRoles` mapping without any security checks,\\n\\t *      doesn't verify the executor (msg.sender) permissions,\\n\\t *      must be kept private at all times\\n\\t *\\n\\t * @param operator address of a user to alter permissions for,\\n\\t *       or self address to alter global features of the smart contract\\n\\t * @param requestedRole bitmask representing a set of permissions requested\\n\\t *      to be enabled/disabled for a user specified, used only to be logged into event\\n\\t * @param assignedRole bitmask representing a set of permissions to\\n\\t *      enable/disable for a user specified, used to update the mapping and to be logged into event\\n\\t */\\n\\tfunction __setRole(address operator, uint256 requestedRole, uint256 assignedRole) private {\\n\\t\\t// assign the role to the operator\\n\\t\\tuserRoles[operator] = assignedRole;\\n\\n\\t\\t// fire an event\\n\\t\\temit RoleUpdated(operator, requestedRole, assignedRole);\\n\\t}\\n\\n\\t/**\\n\\t * @dev Checks if role `actual` contains all the permissions required `required`\\n\\t *\\n\\t * @param actual existent role\\n\\t * @param required required role\\n\\t * @return true if actual has required role (all permissions), false otherwise\\n\\t */\\n\\tfunction __hasRole(uint256 actual, uint256 required) private pure returns (bool) {\\n\\t\\t// check the bitmask for the role required and return the result\\n\\t\\treturn actual & required == required;\\n\\t}\\n}\\n\",\"keccak256\":\"0x0822ed9f2bd286eca4b712d8a136a08eb6ab0ac66a0b75e79ef058925254aa1c\",\"license\":\"MIT\"},\"contracts/utils/Transfers.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.4;\\n\\n/**\\n * @notice Replaces built-in Solidity address.transfer and address.send functions\\n *      with the address.call function\\n */\\nlibrary Transfers {\\n\\t/// @dev Mimics address.send forwarding 4,900 gas\\n\\tfunction send(address payable to, uint256 value) internal returns(bool) {\\n\\t\\t(bool success, ) = to.call{gas: 4900, value: value}(\\\"\\\");\\n\\t\\treturn success;\\n\\t}\\n\\n\\t/// @dev Mimics address.transfer forwarding 4,900 gas\\n\\tfunction transfer(address payable to, uint256 value) internal {\\n\\t\\trequire(send(to, value), \\\"failed to send ether\\\");\\n\\t}\\n\\n\\t/// @dev Alias for `send`\\n\\tfunction send1(address payable to, uint256 value) internal returns(bool) {\\n\\t\\treturn send(to, value);\\n\\t}\\n\\n\\t/// @dev Alias for `transfer`\\n\\tfunction transfer1(address payable to, uint256 value) internal {\\n\\t\\ttransfer(to, value);\\n\\t}\\n}\\n\",\"keccak256\":\"0xc0f5a4f1c527b8bdbedf63c3342657e0ddf3a03b0f80c6117adb51f208cc9cbe\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x60806040523480156200001157600080fd5b50604051620018503803806200185083398101604081905262000034916200030c565b600054610100900460ff16620000515760005460ff16156200005b565b6200005b62000100565b620000b35760405162461bcd60e51b815260206004820152602e60248201526000805160206200183083398151915260448201526d191e481a5b9a5d1a585b1a5e995960921b60648201526084015b60405180910390fd5b600054610100900460ff16158015620000d6576000805461ffff19166101011790555b620000e38484846200011e565b8015620000f6576000805461ff00191690555b5050505062000356565b600062000118306200021060201b62000b481760201c565b15905090565b600054610100900460ff166200013b5760005460ff161562000145565b6200014562000100565b620001995760405162461bcd60e51b815260206004820152602e60248201526000805160206200183083398151915260448201526d191e481a5b9a5d1a585b1a5e995960921b6064820152608401620000aa565b600054610100900460ff16158015620001bc576000805461ffff19166101011790555b620001c78462000216565b603480546001600160a01b038086166001600160a01b031992831617909255603380549285169290911691909117905580156200020a576000805461ff00191690555b50505050565b3b151590565b600054610100900460ff16620002835760405162461bcd60e51b815260206004820152602b60248201527f496e697469616c697a61626c653a20636f6e7472616374206973206e6f74206960448201526a6e697469616c697a696e6760a81b6064820152608401620000aa565b62000292816000198062000295565b50565b6001600160a01b03831660008181526001602090815260409182902084905581518581529081018490527fe9be537308880e0f56b7d7cfd7abf85f14c4934486d138f848b92a0cbaf659b4910160405180910390a2505050565b80516001600160a01b03811681146200030757600080fd5b919050565b6000806000606084860312156200032257600080fd5b6200032d84620002ef565b92506200033d60208501620002ef565b91506200034d60408501620002ef565b90509250925092565b6114ca80620003666000396000f3fe6080604052600436106101185760003560e01c8063ae60bda4116100a0578063d7380ea611610064578063d7380ea61461046e578063e023fd4214610483578063e7db4d81146104a3578063f40f0f52146104c3578063fcc2c078146104e35761016a565b8063ae60bda4146103cc578063ae682e2e146103e4578063c688d693146103fc578063d41c3a651461041c578063d5bb7f671461044e5761016a565b8063725f3626116100e7578063725f36261461030d57806388a7ca5c1461033d578063939d6237146103765780639ba81bed1461038c578063ae5b102e146103ac5761016a565b80631959a0021461022e5780632b521416146102955780633a98ef39146102c157806344276733146102d75761016a565b3661016a576033546001600160a01b03161561014f5760405162461bcd60e51b8152600401610146906111aa565b60405180910390fd5b6101683460405180602001604052806000815250610503565b005b6033546001600160a01b0316156101c35760405162461bcd60e51b815260206004820152601d60248201527f6e6f7420616e2045544820726577617264206469737472696275746f720000006044820152606401610146565b6034546001600160a01b031633146101ed5760405162461bcd60e51b8152600401610146906111aa565b610168346000368080601f01602080910402602001604051908101604052809392919081815260200183838082843760009201919091525061050392505050565b34801561023a57600080fd5b506102706102493660046111e4565b60376020526000908152604090208054600182015460028301546003909301549192909184565b6040805194855260208501939093529183015260608201526080015b60405180910390f35b3480156102a157600080fd5b50306000908152600160205260409020545b60405190815260200161028c565b3480156102cd57600080fd5b506102b360365481565b3480156102e357600080fd5b506102b36102f23660046111e4565b6001600160a01b031660009081526001602052604090205490565b34801561031957600080fd5b5061032d610328366004611201565b610525565b604051901515815260200161028c565b34801561034957600080fd5b5061035d610358366004611230565b610547565b6040516001600160e01b0319909116815260200161028c565b34801561038257600080fd5b506102b360355481565b34801561039857600080fd5b506101686103a73660046111e4565b6105ec565b3480156103b857600080fd5b506101686103c7366004611310565b610671565b3480156103d857600080fd5b506102b3600160fe1b81565b3480156103f057600080fd5b506102b3600160ff1b81565b34801561040857600080fd5b5061032d610417366004611310565b610716565b34801561042857600080fd5b506033546001600160a01b03165b6040516001600160a01b03909116815260200161028c565b34801561045a57600080fd5b50610168610469366004611201565b61073f565b34801561047a57600080fd5b5061016861074c565b34801561048f57600080fd5b5061016861049e36600461133c565b6108c9565b3480156104af57600080fd5b50603454610436906001600160a01b031681565b3480156104cf57600080fd5b506102b36104de3660046111e4565b6109be565b3480156104ef57600080fd5b5061032d6104fe366004611201565b610b3c565b60365460000361051b576105178282610b4e565b5050565b6105178282610cc4565b30600090815260016020526040812054610541905b8316831490565b92915050565b6033546000906001600160a01b031633146105a45760405162461bcd60e51b815260206004820152601f60248201527f7265636569766564206576656e742066726f6d2077726f6e6720746f6b656e006044820152606401610146565b6034546001600160a01b038681169116146105d15760405162461bcd60e51b8152600401610146906111aa565b6105db8383610503565b50632229f29760e21b949350505050565b6034546001600160a01b031615801561060d57506001600160a01b03811615155b61064f5760405162461bcd60e51b8152602060048201526013602482015272185b1c9958591e481a5b9a5d1a585b1a5e9959606a1b6044820152606401610146565b603480546001600160a01b0319166001600160a01b0392909216919091179055565b61067e600160ff1b610b3c565b6106ba5760405162461bcd60e51b815260206004820152600d60248201526c1858d8d95cdcc819195b9a5959609a1b6044820152606401610146565b6105178282610711336106e2876001600160a01b031660009081526001602052604090205490565b6001600160a01b0391909116600090815260016020526040902054600019808818821618908716919091171690565b610da0565b6001600160a01b0382166000908152600160205260408120546107389061053a565b9392505050565b6107493082610671565b50565b6000610757336109be565b90506000811161079c5760405162461bcd60e51b815260206004820152601060248201526f4e6f7468696e6720746f20636c61696d60801b6044820152606401610146565b33600090815260376020526040812060038101829055600281018054919284926107c790849061139d565b90915550506035548154670de0b6b3a7640000916107e4916113b5565b6107ee91906113d4565b60018201556033546001600160a01b03166108125761080d3383610dfa565b610890565b60335460405163a9059cbb60e01b8152336004820152602481018490526001600160a01b039091169063a9059cbb906044016020604051808303816000875af1158015610863573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610887919061140b565b61089057600080fd5b60405182815233907f106f923f993c2149d49b4255ff723acafa1f2d94393f561d3eda32ae348f72419060200160405180910390a25050565b600054610100900460ff166108e45760005460ff16156108e8565b303b155b61094b5760405162461bcd60e51b815260206004820152602e60248201527f496e697469616c697a61626c653a20636f6e747261637420697320616c72656160448201526d191e481a5b9a5d1a585b1a5e995960921b6064820152608401610146565b600054610100900460ff1615801561096d576000805461ffff19166101011790555b61097684610e47565b603480546001600160a01b038086166001600160a01b031992831617909255603380549285169290911691909117905580156109b8576000805461ff00191690555b50505050565b6001600160a01b03811660009081526037602090815260408083208151608081018352815480825260018301549482018590526002830154938201939093526003909101546060820152603554909284929091670de0b6b3a764000091610a2591906113b5565b610a2f91906113d4565b8360600151610a3e919061139d565b610a489190611426565b6033549091506000906001600160a01b031615610ad0576033546040516370a0823160e01b81523060048201526001600160a01b03909116906370a0823190602401602060405180830381865afa158015610aa7573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610acb919061143d565b610ad2565b475b9050610ae281633b9aca0061139d565b8210610b245760405162461bcd60e51b81526020600482015260116024820152703234b9b1b932b830b731bc9032b93937b960791b6044820152606401610146565b808211610b315781610b33565b805b95945050505050565b60006105413383610716565b3b151590565b8051600003610b975760405162461bcd60e51b81526020600482015260156024820152741cde5b98c81b595cdcd859d948195e1c1958dd1959605a1b6044820152606401610146565b8051606014610be15760405162461bcd60e51b81526020600482015260166024820152756d616c666f726d65642073796e63206d65737361676560501b6044820152606401610146565b600080600083806020019051810190610bfa9190611456565b925092509250818015610c0e575060018110155b610c4a5760405162461bcd60e51b815260206004820152600d60248201526c696e76616c696420737461746560981b6044820152606401610146565b610c55836001610ebf565b6001811115610c7b57610c6785610f96565b610c7b83610c76600184611426565b610ebf565b6040518181526001906001600160a01b038516907fbd737de9fda35bf54b4f4a52ea425f0d646b85bafdc736be7fd40cc50dd9ed92906020015b60405180910390a35050505050565b610ccd82610f96565b8051600003610cda575050565b8051606014610d245760405162461bcd60e51b81526020600482015260166024820152756d616c666f726d65642073796e63206d65737361676560501b6044820152606401610146565b600080600083806020019051810190610d3d9190611456565b9250925092508115610d5857610d538382610ebf565b610d62565b610d628382611016565b811515836001600160a01b03167fbd737de9fda35bf54b4f4a52ea425f0d646b85bafdc736be7fd40cc50dd9ed9283604051610cb591815260200190565b6001600160a01b03831660008181526001602090815260409182902084905581518581529081018490527fe9be537308880e0f56b7d7cfd7abf85f14c4934486d138f848b92a0cbaf659b4910160405180910390a2505050565b610e048282611148565b6105175760405162461bcd60e51b81526020600482015260146024820152733330b4b632b2103a379039b2b7321032ba3432b960611b6044820152606401610146565b600054610100900460ff16610eb25760405162461bcd60e51b815260206004820152602b60248201527f496e697469616c697a61626c653a20636f6e7472616374206973206e6f74206960448201526a6e697469616c697a696e6760a81b6064820152608401610146565b6107498160001980610da0565b6001600160a01b0382166000908152603760205260409020805415610f385760008160010154670de0b6b3a76400006035548460000154610f0091906113b5565b610f0a91906113d4565b610f149190611426565b90508015610f365780826003016000828254610f30919061139d565b90915550505b505b81816000016000828254610f4c919061139d565b925050819055508160366000828254610f65919061139d565b90915550506035548154670de0b6b3a764000091610f82916113b5565b610f8c91906113d4565b6001909101555050565b801580610fa35750603654155b15610fab5750565b603654610fc082670de0b6b3a76400006113b5565b610fca91906113d4565b60356000828254610fdb919061139d565b90915550506040518181527f86c46efee0a638b418fa0952cd587c78b75b8bc989e7a7c13a86d448ec34a0849060200160405180910390a150565b6001600160a01b03821660009081526037602052604090205481111561108a5760405162461bcd60e51b815260206004820152602360248201527f616d6f756e74206d757374206265203c3d207265676973746572656420616d6f6044820152621d5b9d60ea1b6064820152608401610146565b6001600160a01b038216600090815260376020526040812060018101546035548254929392670de0b6b3a7640000916110c2916113b5565b6110cc91906113d4565b6110d69190611426565b905080156110f857808260030160008282546110f2919061139d565b90915550505b8154611105908490611426565b8255603654611115908490611426565b6036556035548254670de0b6b3a764000091611130916113b5565b61113a91906113d4565b826001018190555050505050565b600080836001600160a01b031661132484604051600060405180830381858888f193505050503d806000811461119a576040519150601f19603f3d011682016040523d82523d6000602084013e61119f565b606091505b509095945050505050565b6020808252600b908201526a1b9bdd08185b1b1bddd95960aa1b604082015260600190565b6001600160a01b038116811461074957600080fd5b6000602082840312156111f657600080fd5b8135610738816111cf565b60006020828403121561121357600080fd5b5035919050565b634e487b7160e01b600052604160045260246000fd5b6000806000806080858703121561124657600080fd5b8435611251816111cf565b93506020850135611261816111cf565b925060408501359150606085013567ffffffffffffffff8082111561128557600080fd5b818701915087601f83011261129957600080fd5b8135818111156112ab576112ab61121a565b604051601f8201601f19908116603f011681019083821181831017156112d3576112d361121a565b816040528281528a60208487010111156112ec57600080fd5b82602086016020830137600060208483010152809550505050505092959194509250565b6000806040838503121561132357600080fd5b823561132e816111cf565b946020939093013593505050565b60008060006060848603121561135157600080fd5b833561135c816111cf565b9250602084013561136c816111cf565b9150604084013561137c816111cf565b809150509250925092565b634e487b7160e01b600052601160045260246000fd5b600082198211156113b0576113b0611387565b500190565b60008160001904831182151516156113cf576113cf611387565b500290565b6000826113f157634e487b7160e01b600052601260045260246000fd5b500490565b8051801515811461140657600080fd5b919050565b60006020828403121561141d57600080fd5b610738826113f6565b60008282101561143857611438611387565b500390565b60006020828403121561144f57600080fd5b5051919050565b60008060006060848603121561146b57600080fd5b8351611476816111cf565b9250611484602085016113f6565b915060408401519050925092509256fea26469706673582212208505ef4aba9e0a6b77723ea42f05af8133a61932101f8d05595bc75fde0d47fc64736f6c634300080f0033496e697469616c697a61626c653a20636f6e747261637420697320616c726561",
+  "deployedBytecode": "0x6080604052600436106101185760003560e01c8063ae60bda4116100a0578063d7380ea611610064578063d7380ea61461046e578063e023fd4214610483578063e7db4d81146104a3578063f40f0f52146104c3578063fcc2c078146104e35761016a565b8063ae60bda4146103cc578063ae682e2e146103e4578063c688d693146103fc578063d41c3a651461041c578063d5bb7f671461044e5761016a565b8063725f3626116100e7578063725f36261461030d57806388a7ca5c1461033d578063939d6237146103765780639ba81bed1461038c578063ae5b102e146103ac5761016a565b80631959a0021461022e5780632b521416146102955780633a98ef39146102c157806344276733146102d75761016a565b3661016a576033546001600160a01b03161561014f5760405162461bcd60e51b8152600401610146906111aa565b60405180910390fd5b6101683460405180602001604052806000815250610503565b005b6033546001600160a01b0316156101c35760405162461bcd60e51b815260206004820152601d60248201527f6e6f7420616e2045544820726577617264206469737472696275746f720000006044820152606401610146565b6034546001600160a01b031633146101ed5760405162461bcd60e51b8152600401610146906111aa565b610168346000368080601f01602080910402602001604051908101604052809392919081815260200183838082843760009201919091525061050392505050565b34801561023a57600080fd5b506102706102493660046111e4565b60376020526000908152604090208054600182015460028301546003909301549192909184565b6040805194855260208501939093529183015260608201526080015b60405180910390f35b3480156102a157600080fd5b50306000908152600160205260409020545b60405190815260200161028c565b3480156102cd57600080fd5b506102b360365481565b3480156102e357600080fd5b506102b36102f23660046111e4565b6001600160a01b031660009081526001602052604090205490565b34801561031957600080fd5b5061032d610328366004611201565b610525565b604051901515815260200161028c565b34801561034957600080fd5b5061035d610358366004611230565b610547565b6040516001600160e01b0319909116815260200161028c565b34801561038257600080fd5b506102b360355481565b34801561039857600080fd5b506101686103a73660046111e4565b6105ec565b3480156103b857600080fd5b506101686103c7366004611310565b610671565b3480156103d857600080fd5b506102b3600160fe1b81565b3480156103f057600080fd5b506102b3600160ff1b81565b34801561040857600080fd5b5061032d610417366004611310565b610716565b34801561042857600080fd5b506033546001600160a01b03165b6040516001600160a01b03909116815260200161028c565b34801561045a57600080fd5b50610168610469366004611201565b61073f565b34801561047a57600080fd5b5061016861074c565b34801561048f57600080fd5b5061016861049e36600461133c565b6108c9565b3480156104af57600080fd5b50603454610436906001600160a01b031681565b3480156104cf57600080fd5b506102b36104de3660046111e4565b6109be565b3480156104ef57600080fd5b5061032d6104fe366004611201565b610b3c565b60365460000361051b576105178282610b4e565b5050565b6105178282610cc4565b30600090815260016020526040812054610541905b8316831490565b92915050565b6033546000906001600160a01b031633146105a45760405162461bcd60e51b815260206004820152601f60248201527f7265636569766564206576656e742066726f6d2077726f6e6720746f6b656e006044820152606401610146565b6034546001600160a01b038681169116146105d15760405162461bcd60e51b8152600401610146906111aa565b6105db8383610503565b50632229f29760e21b949350505050565b6034546001600160a01b031615801561060d57506001600160a01b03811615155b61064f5760405162461bcd60e51b8152602060048201526013602482015272185b1c9958591e481a5b9a5d1a585b1a5e9959606a1b6044820152606401610146565b603480546001600160a01b0319166001600160a01b0392909216919091179055565b61067e600160ff1b610b3c565b6106ba5760405162461bcd60e51b815260206004820152600d60248201526c1858d8d95cdcc819195b9a5959609a1b6044820152606401610146565b6105178282610711336106e2876001600160a01b031660009081526001602052604090205490565b6001600160a01b0391909116600090815260016020526040902054600019808818821618908716919091171690565b610da0565b6001600160a01b0382166000908152600160205260408120546107389061053a565b9392505050565b6107493082610671565b50565b6000610757336109be565b90506000811161079c5760405162461bcd60e51b815260206004820152601060248201526f4e6f7468696e6720746f20636c61696d60801b6044820152606401610146565b33600090815260376020526040812060038101829055600281018054919284926107c790849061139d565b90915550506035548154670de0b6b3a7640000916107e4916113b5565b6107ee91906113d4565b60018201556033546001600160a01b03166108125761080d3383610dfa565b610890565b60335460405163a9059cbb60e01b8152336004820152602481018490526001600160a01b039091169063a9059cbb906044016020604051808303816000875af1158015610863573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610887919061140b565b61089057600080fd5b60405182815233907f106f923f993c2149d49b4255ff723acafa1f2d94393f561d3eda32ae348f72419060200160405180910390a25050565b600054610100900460ff166108e45760005460ff16156108e8565b303b155b61094b5760405162461bcd60e51b815260206004820152602e60248201527f496e697469616c697a61626c653a20636f6e747261637420697320616c72656160448201526d191e481a5b9a5d1a585b1a5e995960921b6064820152608401610146565b600054610100900460ff1615801561096d576000805461ffff19166101011790555b61097684610e47565b603480546001600160a01b038086166001600160a01b031992831617909255603380549285169290911691909117905580156109b8576000805461ff00191690555b50505050565b6001600160a01b03811660009081526037602090815260408083208151608081018352815480825260018301549482018590526002830154938201939093526003909101546060820152603554909284929091670de0b6b3a764000091610a2591906113b5565b610a2f91906113d4565b8360600151610a3e919061139d565b610a489190611426565b6033549091506000906001600160a01b031615610ad0576033546040516370a0823160e01b81523060048201526001600160a01b03909116906370a0823190602401602060405180830381865afa158015610aa7573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610acb919061143d565b610ad2565b475b9050610ae281633b9aca0061139d565b8210610b245760405162461bcd60e51b81526020600482015260116024820152703234b9b1b932b830b731bc9032b93937b960791b6044820152606401610146565b808211610b315781610b33565b805b95945050505050565b60006105413383610716565b3b151590565b8051600003610b975760405162461bcd60e51b81526020600482015260156024820152741cde5b98c81b595cdcd859d948195e1c1958dd1959605a1b6044820152606401610146565b8051606014610be15760405162461bcd60e51b81526020600482015260166024820152756d616c666f726d65642073796e63206d65737361676560501b6044820152606401610146565b600080600083806020019051810190610bfa9190611456565b925092509250818015610c0e575060018110155b610c4a5760405162461bcd60e51b815260206004820152600d60248201526c696e76616c696420737461746560981b6044820152606401610146565b610c55836001610ebf565b6001811115610c7b57610c6785610f96565b610c7b83610c76600184611426565b610ebf565b6040518181526001906001600160a01b038516907fbd737de9fda35bf54b4f4a52ea425f0d646b85bafdc736be7fd40cc50dd9ed92906020015b60405180910390a35050505050565b610ccd82610f96565b8051600003610cda575050565b8051606014610d245760405162461bcd60e51b81526020600482015260166024820152756d616c666f726d65642073796e63206d65737361676560501b6044820152606401610146565b600080600083806020019051810190610d3d9190611456565b9250925092508115610d5857610d538382610ebf565b610d62565b610d628382611016565b811515836001600160a01b03167fbd737de9fda35bf54b4f4a52ea425f0d646b85bafdc736be7fd40cc50dd9ed9283604051610cb591815260200190565b6001600160a01b03831660008181526001602090815260409182902084905581518581529081018490527fe9be537308880e0f56b7d7cfd7abf85f14c4934486d138f848b92a0cbaf659b4910160405180910390a2505050565b610e048282611148565b6105175760405162461bcd60e51b81526020600482015260146024820152733330b4b632b2103a379039b2b7321032ba3432b960611b6044820152606401610146565b600054610100900460ff16610eb25760405162461bcd60e51b815260206004820152602b60248201527f496e697469616c697a61626c653a20636f6e7472616374206973206e6f74206960448201526a6e697469616c697a696e6760a81b6064820152608401610146565b6107498160001980610da0565b6001600160a01b0382166000908152603760205260409020805415610f385760008160010154670de0b6b3a76400006035548460000154610f0091906113b5565b610f0a91906113d4565b610f149190611426565b90508015610f365780826003016000828254610f30919061139d565b90915550505b505b81816000016000828254610f4c919061139d565b925050819055508160366000828254610f65919061139d565b90915550506035548154670de0b6b3a764000091610f82916113b5565b610f8c91906113d4565b6001909101555050565b801580610fa35750603654155b15610fab5750565b603654610fc082670de0b6b3a76400006113b5565b610fca91906113d4565b60356000828254610fdb919061139d565b90915550506040518181527f86c46efee0a638b418fa0952cd587c78b75b8bc989e7a7c13a86d448ec34a0849060200160405180910390a150565b6001600160a01b03821660009081526037602052604090205481111561108a5760405162461bcd60e51b815260206004820152602360248201527f616d6f756e74206d757374206265203c3d207265676973746572656420616d6f6044820152621d5b9d60ea1b6064820152608401610146565b6001600160a01b038216600090815260376020526040812060018101546035548254929392670de0b6b3a7640000916110c2916113b5565b6110cc91906113d4565b6110d69190611426565b905080156110f857808260030160008282546110f2919061139d565b90915550505b8154611105908490611426565b8255603654611115908490611426565b6036556035548254670de0b6b3a764000091611130916113b5565b61113a91906113d4565b826001018190555050505050565b600080836001600160a01b031661132484604051600060405180830381858888f193505050503d806000811461119a576040519150601f19603f3d011682016040523d82523d6000602084013e61119f565b606091505b509095945050505050565b6020808252600b908201526a1b9bdd08185b1b1bddd95960aa1b604082015260600190565b6001600160a01b038116811461074957600080fd5b6000602082840312156111f657600080fd5b8135610738816111cf565b60006020828403121561121357600080fd5b5035919050565b634e487b7160e01b600052604160045260246000fd5b6000806000806080858703121561124657600080fd5b8435611251816111cf565b93506020850135611261816111cf565b925060408501359150606085013567ffffffffffffffff8082111561128557600080fd5b818701915087601f83011261129957600080fd5b8135818111156112ab576112ab61121a565b604051601f8201601f19908116603f011681019083821181831017156112d3576112d361121a565b816040528281528a60208487010111156112ec57600080fd5b82602086016020830137600060208483010152809550505050505092959194509250565b6000806040838503121561132357600080fd5b823561132e816111cf565b946020939093013593505050565b60008060006060848603121561135157600080fd5b833561135c816111cf565b9250602084013561136c816111cf565b9150604084013561137c816111cf565b809150509250925092565b634e487b7160e01b600052601160045260246000fd5b600082198211156113b0576113b0611387565b500190565b60008160001904831182151516156113cf576113cf611387565b500290565b6000826113f157634e487b7160e01b600052601260045260246000fd5b500490565b8051801515811461140657600080fd5b919050565b60006020828403121561141d57600080fd5b610738826113f6565b60008282101561143857611438611387565b500390565b60006020828403121561144f57600080fd5b5051919050565b60008060006060848603121561146b57600080fd5b8351611476816111cf565b9250611484602085016113f6565b915060408401519050925092509256fea26469706673582212208505ef4aba9e0a6b77723ea42f05af8133a61932101f8d05595bc75fde0d47fc64736f6c634300080f0033",
+  "devdoc": {
+    "details": "Apart from the `accept(uint256,address)` function designed to accept the fees from the      curve contract, the implementation must implement receive(), fallback(), and onTransferReceived()      functions to accept direct payments in both ETH and/or ERC20 payment tokenreceive() and onTransferReceived() with an empty data field must accept the fee in the same way      as an accept() function would do, but in a passive way (without ERC20 transfer)The fallback() and onTransferReceived() with non-empty data field must accept the fee and the trading event;      trading event encoded in the bytes data field contains the information      on the trade which resulted in the fee being sent:      - address trader - shares holder/trader      - bool isBuy - true if shares were bought, false if shares were sold      - uint256 sharesAmount - amount of shares bought or sold      the values above are packed as data = abi.encode(trader, isBuy, sharesAmount)      and can be unpacked as (trader, isBuy, sharesAmount) = abi.decode(data, (address, bool, uint256))      if specified, the data field must be parsed by the implementation and its containing data applied;      standard logic applies, if the data is malformed implementation should throw",
+    "kind": "dev",
+    "methods": {
+      "claimTheReward()": {
+        "details": "Holder can verify pending reward amount with the `pendingReward` function"
+      },
+      "constructor": {
+        "details": "Deploys the distributor contract",
+        "params": {
+          "_owner": "contract, optional (can be zero address), since there are no admin functions",
+          "_paymentToken": "ERC1363 payment token to bind to, optional (can be zero address),      zero address means distributor works with the plain ETH",
+          "_sharesContractAddress": "TradeableShares contract to bind the distributor to,      optional (can be zero address), this can be set up later with the      `initializeSharesContractAddressIfRequired` function"
+        }
+      },
+      "features()": {
+        "details": "Effectively reads userRoles role for the contract itself",
+        "returns": {
+          "_0": "256-bit bitmask of the features enabled"
+        }
+      },
+      "getPaymentToken()": {
+        "returns": {
+          "_0": "ERC20 payment token address the contract is bound to,      or zero zero address if it operates with the plain ETH"
+        }
+      },
+      "getRole(address)": {
+        "details": "Having a simple getter instead of making the mapping public      allows enforcing the encapsulation of the mapping and protects from      writing to it directly in the inheriting smart contracts",
+        "params": {
+          "operator": "address of a user to read permissions for,      or self address to read global features of the smart contract"
+        }
+      },
+      "initializeSharesContractAddressIfRequired(address)": {
+        "details": "TradeableShares contract can be set only once; fails if it is already set",
+        "params": {
+          "_sharesContractAddress": "TradeableShares contract to bind the distributor to"
+        }
+      },
+      "isFeatureEnabled(uint256)": {
+        "params": {
+          "required": "set of features to check against"
+        },
+        "returns": {
+          "_0": "true if all the features requested are enabled, false otherwise"
+        }
+      },
+      "isOperatorInRole(address,uint256)": {
+        "params": {
+          "operator": "address of the user to check role for",
+          "required": "set of permissions (role) to check"
+        },
+        "returns": {
+          "_0": "true if all the permissions requested are enabled, false otherwise"
+        }
+      },
+      "isSenderInRole(uint256)": {
+        "details": "Used in smart contracts only. Off-chain clients should use `isOperatorInRole`.",
+        "params": {
+          "required": "set of permissions (role) to check against"
+        },
+        "returns": {
+          "_0": "true if all the permissions requested are enabled, false otherwise"
+        }
+      },
+      "onTransferReceived(address,address,uint256,bytes)": {
+        "details": "Non-empty `data` executes trade updates and therefore is restricted to be sent only      by `sharesContractAddress`",
+        "params": {
+          "data": "bytes Additional data with no specified format",
+          "from": "address The address which are token transferred from",
+          "operator": "address The address which called `transferAndCall` or `transferFromAndCall` function",
+          "value": "uint256 The amount of tokens transferred"
+        },
+        "returns": {
+          "_0": "`bytes4(keccak256(\"onTransferReceived(address,address,uint256,bytes)\"))`      unless throwing"
+        }
+      },
+      "pendingReward(address)": {
+        "params": {
+          "holder": "the holder address to query the reward for"
+        },
+        "returns": {
+          "_0": "pending reward amount\\"
+        }
+      },
+      "postConstruct(address,address,address)": {
+        "details": "\"Constructor replacement\" for initializable, must be execute during or immediately after deployment      see https://docs.openzeppelin.com/upgrades-plugins/1.x/writing-upgradeable#initializers",
+        "params": {
+          "_owner": "contract, optional (can be zero address), since there are no admin functions",
+          "_paymentToken": "ERC1363 payment token to bind to, optional (can be zero address),      zero address means distributor works with the plain ETH",
+          "_sharesContractAddress": "TradeableShares contract to bind the distributor to,      optional (can be zero address), this can be set up later with the      `initializeSharesContractAddressIfRequired` function"
+        }
+      },
+      "updateFeatures(uint256)": {
+        "details": "Requires transaction sender to have `ROLE_ACCESS_MANAGER` permissionFunction is left for backward compatibility with older versions",
+        "params": {
+          "_mask": "bitmask representing a set of features to enable/disable"
+        }
+      },
+      "updateRole(address,uint256)": {
+        "details": "Setting role to zero is equivalent to removing an all permissionsSetting role to `FULL_PRIVILEGES_MASK` is equivalent to      copying senders' permissions (role) to the userRequires transaction sender to have `ROLE_ACCESS_MANAGER` permission",
+        "params": {
+          "operator": "address of a user to alter permissions for,       or self address to alter global features of the smart contract",
+          "role": "bitmask representing a set of permissions to      enable/disable for a user specified"
+        }
+      }
+    },
+    "title": "Bonding Curve Holder Reward Distributor",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "ROLE_ACCESS_MANAGER()": {
+        "notice": "Access manager is responsible for assigning the roles to users,      enabling/disabling global features of the smart contractAccess manager can add, remove and update user roles,      remove and update global features"
+      },
+      "ROLE_UPGRADE_MANAGER()": {
+        "notice": "Upgrade manager is responsible for smart contract upgrades,      see https://docs.openzeppelin.com/contracts/4.x/api/proxy#UUPSUpgradeable      see https://docs.openzeppelin.com/contracts/4.x/upgradeable"
+      },
+      "accRewardPerShare()": {
+        "notice": "accumulated reward per share, times 1e18 (with 18 decimal precision)"
+      },
+      "claimTheReward()": {
+        "notice": "Executed by the holder to claim entire pending reward"
+      },
+      "features()": {
+        "notice": "Retrieves globally set of features enabled"
+      },
+      "getPaymentToken()": {
+        "notice": "ERC20 payment token distributor is bound to"
+      },
+      "getRole(address)": {
+        "notice": "Reads the permissions (role) for a given user from the `userRoles` mapping      (privileged addresses with defined roles/permissions)In the context of ERC20/ERC721 tokens these can be permissions to      allow minting or burning tokens, transferring on behalf and so on"
+      },
+      "initializeSharesContractAddressIfRequired(address)": {
+        "notice": "Sets the TradeableShares contract to bind the distributor to"
+      },
+      "isFeatureEnabled(uint256)": {
+        "notice": "Checks if requested set of features is enabled globally on the contract"
+      },
+      "isOperatorInRole(address,uint256)": {
+        "notice": "Checks if operator has all the permissions (role) required"
+      },
+      "isSenderInRole(uint256)": {
+        "notice": "Checks if transaction sender `msg.sender` has all the permissions required"
+      },
+      "onTransferReceived(address,address,uint256,bytes)": {
+        "notice": "Anyone can send some additional rewards – just use empty `data` for a callback"
+      },
+      "pendingReward(address)": {
+        "notice": "Pending (claimable) reward. This is the amount which can be claimed using `claimTheReward`"
+      },
+      "sharesContractAddress()": {
+        "notice": "bonding curve contract address"
+      },
+      "totalShares()": {
+        "notice": "total number of share registered"
+      },
+      "updateFeatures(uint256)": {
+        "notice": "Updates set of the globally enabled features (`features`),      taking into account sender's permissions"
+      },
+      "updateRole(address,uint256)": {
+        "notice": "Updates set of permissions (role) for a given user,      taking into account sender's permissions."
+      }
+    },
+    "notice": "Holder reward distributor keeps track of every trade event happening in the curve,      and based on the amount of shares the holder has, alters the holders' reward weight,      which directly affects the amount of the distributed rewards between the holdersHolder reward distributor accepts the fees from the curve and distributes these fees      across shares holders proportionally to their weights",
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 1858,
+        "contract": "contracts/bonding_curves/HoldersRewardsDistributorV1.sol:HoldersRewardsDistributorV1",
+        "label": "_initialized",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_bool"
+      },
+      {
+        "astId": 1861,
+        "contract": "contracts/bonding_curves/HoldersRewardsDistributorV1.sol:HoldersRewardsDistributorV1",
+        "label": "_initializing",
+        "offset": 1,
+        "slot": "0",
+        "type": "t_bool"
+      },
+      {
+        "astId": 30084,
+        "contract": "contracts/bonding_curves/HoldersRewardsDistributorV1.sol:HoldersRewardsDistributorV1",
+        "label": "userRoles",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 30089,
+        "contract": "contracts/bonding_curves/HoldersRewardsDistributorV1.sol:HoldersRewardsDistributorV1",
+        "label": "__gap",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_array(t_uint256)49_storage"
+      },
+      {
+        "astId": 7757,
+        "contract": "contracts/bonding_curves/HoldersRewardsDistributorV1.sol:HoldersRewardsDistributorV1",
+        "label": "paymentToken",
+        "offset": 0,
+        "slot": "51",
+        "type": "t_address"
+      },
+      {
+        "astId": 7760,
+        "contract": "contracts/bonding_curves/HoldersRewardsDistributorV1.sol:HoldersRewardsDistributorV1",
+        "label": "sharesContractAddress",
+        "offset": 0,
+        "slot": "52",
+        "type": "t_address"
+      },
+      {
+        "astId": 7763,
+        "contract": "contracts/bonding_curves/HoldersRewardsDistributorV1.sol:HoldersRewardsDistributorV1",
+        "label": "accRewardPerShare",
+        "offset": 0,
+        "slot": "53",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 7766,
+        "contract": "contracts/bonding_curves/HoldersRewardsDistributorV1.sol:HoldersRewardsDistributorV1",
+        "label": "totalShares",
+        "offset": 0,
+        "slot": "54",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 7771,
+        "contract": "contracts/bonding_curves/HoldersRewardsDistributorV1.sol:HoldersRewardsDistributorV1",
+        "label": "userInfo",
+        "offset": 0,
+        "slot": "55",
+        "type": "t_mapping(t_address,t_struct(UserInfo)7755_storage)"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_array(t_uint256)49_storage": {
+        "base": "t_uint256",
+        "encoding": "inplace",
+        "label": "uint256[49]",
+        "numberOfBytes": "1568"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_mapping(t_address,t_struct(UserInfo)7755_storage)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => struct HoldersRewardsDistributorV1.UserInfo)",
+        "numberOfBytes": "32",
+        "value": "t_struct(UserInfo)7755_storage"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_struct(UserInfo)7755_storage": {
+        "encoding": "inplace",
+        "label": "struct HoldersRewardsDistributorV1.UserInfo",
+        "members": [
+          {
+            "astId": 7748,
+            "contract": "contracts/bonding_curves/HoldersRewardsDistributorV1.sol:HoldersRewardsDistributorV1",
+            "label": "shares",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 7750,
+            "contract": "contracts/bonding_curves/HoldersRewardsDistributorV1.sol:HoldersRewardsDistributorV1",
+            "label": "rewardDebt",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 7752,
+            "contract": "contracts/bonding_curves/HoldersRewardsDistributorV1.sol:HoldersRewardsDistributorV1",
+            "label": "claimedAmount",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 7754,
+            "contract": "contracts/bonding_curves/HoldersRewardsDistributorV1.sol:HoldersRewardsDistributorV1",
+            "label": "unclaimedAmount",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint256"
+          }
+        ],
+        "numberOfBytes": "128"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}

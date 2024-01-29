@@ -1,0 +1,28 @@
+syntax:glob
+
+# IntelliJ IDEA
+.idea/**
+*.iml
+
+# Node.js
+node_modules/
+.env
+
+# solidity-coverage
+.coverage_artifacts
+.coverage_contracts
+coverage/
+coverageEnv/
+coverage.json
+
+# truffle suite
+build/
+
+# hardhat
+cache/
+artifacts/
+
+# etc
+*.log
+keys.js
+bin

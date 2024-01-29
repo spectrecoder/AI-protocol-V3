@@ -1,0 +1,60 @@
+{
+  "name": "@ai-protocol/v3-core",
+  "version": "3.0.1",
+  "description": "AI Protocol V3 Core smart contracts",
+  "main": "index.js",
+  "scripts": {
+    "clean": "hardhat clean",
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "coverage": "hardhat coverage",
+    "verify-testnet": "npm run verify-goerli && npm run verify-binance_testnet && npm run verify-opBnb_testnet && npm run verify-base_goerli",
+    "verify": "npm run verify-mainnet && npm run verify-binance && npm run verify-opBnb && npm run verify-base_mainnet",
+    "verify-goerli": "hardhat etherscan-verify --network goerli --api-key $ETHERSCAN_KEY",
+    "verify-binance_testnet": "hardhat etherscan-verify --network binance_testnet --api-key $BSCSCAN_KEY",
+    "verify-opBnb_testnet": "hardhat etherscan-verify --network opBnb_testnet --api-key $BSCSCAN_KEY --api-url https://api-opbnb-testnet.bscscan.com/",
+    "verify-base_goerli": "hardhat etherscan-verify --network base_goerli --api-key $BASESCAN_KEY --api-url https://api-goerli.basescan.org/",
+    "verify-mainnet": "hardhat etherscan-verify --network mainnet --api-key $ETHERSCAN_KEY",
+    "verify-binance": "hardhat etherscan-verify --network binance --api-key $BSCSCAN_KEY",
+    "verify-opBnb": "hardhat etherscan-verify --network opBnb --api-key $BSCSCAN_KEY --api-url https://opbnbscan.com",
+    "verify-base_mainnet": "hardhat etherscan-verify --network base_mainnet --api-key $BASESCAN_KEY --api-url https://api.basescan.org"
+  },
+  "keywords": [],
+  "author": "Basil Gorin",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.20.0"
+  },
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.2.3",
+    "@nomiclabs/hardhat-truffle5": "^2.0.7",
+    "@nomiclabs/hardhat-web3": "^2.0.0",
+    "@openzeppelin/contracts": "4.4.1",
+    "@openzeppelin/contracts-upgradeable": "4.4.1",
+    "@openzeppelin/test-helpers": "github:vgorin/openzeppelin-test-helpers",
+    "chai": "^4.4.1",
+    "chai-bn": "^0.3.1",
+    "chai-subset": "^1.6.0",
+    "dotenv": "^16.4.1",
+    "eth-sig-util": "^3.0.1",
+    "ethereum-hdwallet": "^0.1.2",
+    "ethereumjs-abi": "^0.6.8",
+    "ethereumjs-util": "^7.1.5",
+    "ethereumjs-wallet": "^1.0.1",
+    "hardhat": "^2.19.4",
+    "hardhat-dependency-compiler": "^1.1.2",
+    "hardhat-deploy": "^0.11.45",
+    "hardhat-gas-reporter": "^1.0.4",
+    "keccak256": "^1.0.3",
+    "loglevel": "^1.9.1",
+    "merkletreejs": "^0.3.11",
+    "solidity-coverage": "^0.8.5"
+  },
+  "overrides": {
+    "flat": "^5.0.1",
+    "got": "^11.8.5",
+    "minimatch": "^3.0.5",
+    "trim-newlines": "^3.0.1",
+    "yargs-parser": "^5.0.1"
+  }
+}
