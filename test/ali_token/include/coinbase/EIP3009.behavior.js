@@ -1084,7 +1084,7 @@ function signEIP712(
   return ecSign(digest, privateKey);
 }
 
-// Alethea: Hardhat time differs from Date.now(), use this function to obtain it
+// AI Protocol: Hardhat time differs from Date.now(), use this function to obtain it
 async function now() {
   const latestBlock = await web3.eth.getBlock("latest");
   return latestBlock.timestamp;

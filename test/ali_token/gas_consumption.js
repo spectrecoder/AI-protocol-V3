@@ -70,7 +70,7 @@ contract("AliERC20: Gas Consumption (Non-functional Requirements) tests", functi
 		const w = web3.eth.accounts.create();
 		// builds EIP712 domain
 		async function eip712_domain() {
-			// Alethea: Chain ID opcode hardcoded at 1 in Ganache-cli, but not in Hardhat
+			// AI Protocol: Chain ID opcode hardcoded at 1 in Ganache-cli, but not in Hardhat
 			// See: https://github.com/trufflesuite/ganache/issues/1643
 			//      https://github.com/trufflesuite/ganache-core/issues/515
 			const chainId = await web3.eth.net.getId();

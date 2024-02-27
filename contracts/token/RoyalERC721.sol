@@ -10,8 +10,6 @@ import "./TinyERC721.sol";
  * @dev Supports EIP-2981 royalties on NFT secondary sales
  *      Supports OpenSea contract metadata royalties
  *      Introduces fake "owner" to support OpenSea collections
- *
- * @author Basil Gorin
  */
 abstract contract RoyalERC721 is EIP2981, TinyERC721 {
 	/**

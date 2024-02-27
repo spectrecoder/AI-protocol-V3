@@ -10,8 +10,6 @@ pragma solidity ^0.8.4;
  *
  * @dev See https://docs.x.immutable.com/docs/minting-assets-1
  * @dev See https://docs.x.immutable.com/docs/partner-nft-minting-setup
- *
- * @author Basil Gorin
  */
 
 /**

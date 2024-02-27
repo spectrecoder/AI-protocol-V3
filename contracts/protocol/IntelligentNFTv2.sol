@@ -16,8 +16,6 @@ import "../utils/AccessControl.sol";
  *      to reuse some of the ERC721 client code for display/reading.
  *
  * @dev See Intelligent NFT documentation below.
- *
- * @author Basil Gorin
  */
 interface IntelligentNFTv2Spec {
 	/**
@@ -88,8 +86,6 @@ interface IntelligentNFTv2Spec {
  * @dev iNFTs can be
  *      - created, this process requires an AI Personality and ALI tokens to be locked
  *      - destroyed, this process releases an AI Personality and ALI tokens previously locked
- *
- * @author Basil Gorin
  */
 contract IntelligentNFTv2 is IntelligentNFTv2Spec, AccessControl, ERC165 {
 	/**

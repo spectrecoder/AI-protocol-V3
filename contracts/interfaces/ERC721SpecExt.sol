@@ -4,10 +4,8 @@ pragma solidity ^0.8.4;
 /**
  * @title Mintable ERC721
  *
- * @notice Defines mint capabilities for Alethea ERC721 tokens.
+ * @notice Defines mint capabilities for AI Protocol ERC721 tokens.
  *      This interface should be treated as a definition of what mintable means for ERC721
- *
- * @author Basil Gorin
  */
 interface MintableERC721 {
 	/**
@@ -128,12 +126,10 @@ interface MintableERC721 {
 }
 
 /**
- * @title Alethea Burnable ERC721
+ * @title AI Protocol Burnable ERC721
  *
- * @notice Defines burn capabilities for Alethea ERC721 tokens.
+ * @notice Defines burn capabilities for AI Protocol ERC721 tokens.
  *      This interface should be treated as a definition of what burnable means for ERC721
- *
- * @author Basil Gorin
  */
 interface BurnableERC721 {
 	/**
@@ -153,8 +149,6 @@ interface BurnableERC721 {
  * @notice A marker interface for the contracts having the baseURI() function
  *      or public string variable named baseURI
  *      NFT implementations like TinyERC721, or ShortERC721 are example of such smart contracts
- *
- * @author Basil Gorin
  */
 interface WithBaseURI {
 	/**

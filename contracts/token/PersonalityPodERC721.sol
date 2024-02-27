@@ -15,8 +15,6 @@ import "./RoyalERC721.sol";
  *
  * @dev Personality Pod is a Tiny ERC721, it supports minting and burning,
  *      its token ID space is limited to 32 bits
- *
- * @author Basil Gorin
  */
 contract PersonalityPodERC721 is RoyalERC721 {
 	/**

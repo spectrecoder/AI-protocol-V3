@@ -3,7 +3,7 @@
 
 const { BN, expectRevert, expectEvent } = require('@openzeppelin/test-helpers');
 const { shouldSupportInterfaces } = require('./SupportsInterface.behavior');
-// Alethea: enable BN.should.be....
+// AI Protocol: enable BN.should.be....
 require("chai").should()
 
 const ERC1363Receiver = artifacts.require('ERC1363ReceiverMock');
@@ -62,7 +62,7 @@ function shouldBehaveLikeERC1363 ([owner, spender, recipient], balance) {
       describe('when the sender does not have enough balance', function () {
         const amount = balance + 1;
 
-        // Alethea: allowance check goes before balance check
+        // AI Protocol: allowance check goes before balance check
         beforeEach(async function() {
           await this.token.approve(spender, amount, {from: sender});
         });

@@ -10,20 +10,20 @@ import "../lib/AddressUtils.sol";
 import "../lib/ECDSA.sol";
 
 /**
- * @title Artificial Liquid Intelligence ERC20 Token (ALI)
+ * @title Advanced ERC20
  *
- * @notice ALI is the native utility token of the AI Protocol.
- *      It serves as protocol currency, participates in iNFTs lifecycle,
- *      (locked when iNFT is created, released when iNFT is destroyed,
- *      consumed when iNFT is upgraded).
- *      ALI token powers up the governance protocol (AI Protocol DAO)
+ * @notice Feature rich lightweight ERC20 implementation which is not built on top of OpenZeppelin ERC20 implementation.
+ *      It uses some other OpenZeppelin code:
+ *         - low level functions to work with ECDSA signatures (recover)
+ *         - low level functions to work contract addresses (isContract)
+ *         - OZ UUPS proxy and smart contracts upgradeability code
  *
  * @notice Token Summary:
- *      - Symbol: ALI
- *      - Name: Artificial Liquid Intelligence Token
+ *      - Symbol: configurable (set on deployment)
+ *      - Name: configurable (set on deployment)
  *      - Decimals: 18
- *      - Initial/maximum total supply: 10,000,000,000 ALI
- *      - Initial supply holder (initial holder) address: 0x0738F702D1a7364d356729Cb8845701885C487A1 (configurable)
+ *      - Initial/maximum total supply: configurable (set on deployment)
+ *      - Initial supply holder (initial holder) address: configurable (set on deployment)
  *      - Mintability: configurable (initially enabled, but possible to revoke forever)
  *      - Burnability: configurable (initially enabled, but possible to revoke forever)
  *      - DAO Support: supports voting delegation
@@ -86,7 +86,7 @@ import "../lib/ECDSA.sol";
  *      See adopted copies of all the tests in the project test folder
  *
  * @dev Compound-like voting delegation functions', public getters', and events' names
- *      were changed for better code readability (AI Protocol Name <- Comp/Zeppelin name):
+ *      were changed for better code readability (Our Name <- Comp/Zeppelin name):
  *      - votingDelegates           <- delegates
  *      - votingPowerHistory        <- checkpoints
  *      - votingPowerHistoryLength  <- numCheckpoints
@@ -115,7 +115,7 @@ import "../lib/ECDSA.sol";
  *
  * @dev Includes resolutions for ALI ERC20 Audit by Miguel Palhas, https://hackmd.io/@naps62/alierc20-audit
  */
-contract AliERC20v2Base is ERC1363, EIP2612, EIP3009, AccessControl {
+contract WhitelabelERC20 is ERC1363, EIP2612, EIP3009, AccessControl {
 	/**
 	 * @dev Smart contract unique identifier, a random number
 	 *
@@ -124,10 +124,10 @@ contract AliERC20v2Base is ERC1363, EIP2612, EIP3009, AccessControl {
 	 *
 	 * @dev Generated using https://www.random.org/bytes/
 	 */
-	uint256 public constant TOKEN_UID = 0x12bd2f619fc10a5ea1163ac859bc851ba1c0453e21abcd5d64f633889e432674;
+	uint256 public constant TOKEN_UID = 0x47adbd88b0315a31e0bd3c60297ae261d55ef649783baa81a31a5059688f1e85;
 
 	/**
-	 * @notice Name of the token: Artificial Liquid Intelligence Token
+	 * @notice Name of the token
 	 *
 	 * @notice ERC20 name of the token (long name)
 	 *
@@ -136,10 +136,10 @@ contract AliERC20v2Base is ERC1363, EIP2612, EIP3009, AccessControl {
 	 * @dev Field is declared public: getter name() is created when compiled,
 	 *      it returns the name of the token.
 	 */
-	string public constant name = "Artificial Liquid Intelligence Token";
+	string public name;
 
 	/**
-	 * @notice Symbol of the token: ALI
+	 * @notice Symbol of the token
 	 *
 	 * @notice ERC20 symbol of that token (short name)
 	 *
@@ -148,7 +148,7 @@ contract AliERC20v2Base is ERC1363, EIP2612, EIP3009, AccessControl {
 	 * @dev Field is declared public: getter symbol() is created when compiled,
 	 *      it returns the symbol of the token
 	 */
-	string public constant symbol = "ALI";
+	string public symbol;
 
 	/**
 	 * @notice Decimals of the token: 18
@@ -421,7 +421,7 @@ contract AliERC20v2Base is ERC1363, EIP2612, EIP3009, AccessControl {
 	 *      see https://eips.ethereum.org/EIPS/eip-712#rationale-for-typehash
 	 *
 	 * @dev Note: we do not include version into the domain typehash/separator,
-	 *      it is implied version is concatenated to the name field, like "AliERC20v2"
+	 *      it is implied version is concatenated to the name field, like "WhitelabelERC20"
 	 */
 	// keccak256("EIP712Domain(string name,uint256 chainId,address verifyingContract)")
 	bytes32 public constant DOMAIN_TYPEHASH = 0x8cad95687ba82c2ce50e74f7b754645e5117c3a5bec8151c0726d5857980a866;
@@ -434,7 +434,7 @@ contract AliERC20v2Base is ERC1363, EIP2612, EIP3009, AccessControl {
 	function DOMAIN_SEPARATOR() public view override returns(bytes32) {
 		// build the EIP-712 contract domain separator, see https://eips.ethereum.org/EIPS/eip-712#definition-of-domainseparator
 		// note: we specify contract version in its name
-		return keccak256(abi.encode(DOMAIN_TYPEHASH, keccak256(bytes("AliERC20v2")), block.chainid, address(this)));
+		return keccak256(abi.encode(DOMAIN_TYPEHASH, keccak256(bytes("WhitelabelERC20")), block.chainid, address(this)));
 	}
 
 	/**
@@ -550,7 +550,19 @@ contract AliERC20v2Base is ERC1363, EIP2612, EIP3009, AccessControl {
 	 * @param _initialHolder owner of the initial token supply
 	 * @param _initialSupply initial token supply value
 	 */
-	constructor(address _initialHolder, uint256 _initialSupply) AccessControl(msg.sender) {
+	constructor(
+		string memory _name,
+		string memory _symbol,
+		address _initialHolder,
+		uint256 _initialSupply
+	) AccessControl(msg.sender) {
+		// verify name and symbol are set
+		require(bytes(_name).length > 0 && bytes(_symbol).length > 0, "token name/symbol is not set");
+
+		// set name and symbol
+		name = _name;
+		symbol = _symbol;
+
 		// verify initial holder address non-zero (is set) if there is an initial supply to mint
 		require(_initialSupply == 0 || _initialHolder != address(0), "_initialHolder not set (zero address)");
 
@@ -770,7 +782,7 @@ contract AliERC20v2Base is ERC1363, EIP2612, EIP3009, AccessControl {
 	 */
 	function _notifyTransferred(address _from, address _to, uint256 _value, bytes memory _data, bool allowEoa) private {
 		// if recipient `_to` is EOA
-		if (!AddressUtils.isContract(_to)) {
+		if(!AddressUtils.isContract(_to)) {
 			// ensure EOA recipient is allowed
 			require(allowEoa, "EOA recipient");
 
@@ -1939,7 +1951,7 @@ contract AliERC20v2Base is ERC1363, EIP2612, EIP3009, AccessControl {
 				return kv.v;
 			}
 			// if the value of interest is larger - move left bound to the middle
-			else if (kv.k < _k) {
+			else if(kv.k < _k) {
 				// move left bound `i` to the middle position `k`
 				i = k;
 			}
@@ -1987,31 +1999,3 @@ contract AliERC20v2Base is ERC1363, EIP2612, EIP3009, AccessControl {
 
 	// ===== End: DAO Support (Compound-like voting delegation) =====
 }
-
-/**
- * @title Artificial Liquid Intelligence ERC20 Token (ALI)
- *
- * @notice Ethereum mainnet implementation with the fixed supply 10,000,000,000 ALI (non-configurable)
- */
-contract AliERC20v2 is AliERC20v2Base {
-	/**
-	 * @dev Deploys the token smart contract,
-	 *      assigns initial token supply to the address specified
-	 *
-	 * @param _initialHolder owner of the initial token supply
-	 */
-	constructor(address _initialHolder) AliERC20v2Base(_initialHolder, 10_000_000_000e18) {}
-}
-
-/**
- * @title Artificial Liquid Intelligence ERC20 Token (ALI)
- *
- * @notice Non-Ethereum implementation (L2) with no initial supply
- */
-contract ChildAliERC20v2 is AliERC20v2Base {
-	/**
-	 * @dev Deploys the token smart contract with no initial supply
-	 */
-	constructor() AliERC20v2Base(address(0), 0) {}
-}
-

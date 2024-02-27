@@ -19,11 +19,11 @@ const Permit = [
   { name: 'deadline', type: 'uint256' },
 ];
 
-// Alethea: Truffle Contract test suite converted into behavior
-// Alethea: remove versionId from the EIP712 DomainSeparator
+// AI Protocol: Truffle Contract test suite converted into behavior
+// AI Protocol: remove versionId from the EIP712 DomainSeparator
 function shouldBehaveLikeEIP2612(name, symbol, initialSupply, initialHolder, spender) {
   beforeEach(async function () {
-    // Alethea: Chain ID opcode hardcoded at 1 in Ganache-cli, but not in Hardhat
+    // AI Protocol: Chain ID opcode hardcoded at 1 in Ganache-cli, but not in Hardhat
     // See: https://github.com/trufflesuite/ganache/issues/1643
     //      https://github.com/trufflesuite/ganache-core/issues/515
     this.chainId = await web3.eth.net.getId();

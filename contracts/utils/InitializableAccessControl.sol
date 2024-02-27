@@ -57,8 +57,6 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
  *      see https://forum.openzeppelin.com/t/uups-proxies-tutorial-solidity-javascript/7786
  *      see https://eips.ethereum.org/EIPS/eip-1167
  *      see https://docs.openzeppelin.com/contracts/4.x/api/proxy#Clones
- *
- * @author Basil Gorin
  */
 abstract contract InitializableAccessControl is Initializable {
 	/**

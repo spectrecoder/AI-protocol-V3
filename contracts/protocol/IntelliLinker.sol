@@ -16,8 +16,6 @@ import "./IntelligentNFTv2.sol";
  *      - doesn't support unlinking + linking in a single transaction
  *      - doesn't support AI Personality smart contract upgrades: in case when new
  *        AI Personality contract is deployed, new iNFT Linker should also be deployed
- *
- * @author Basil Gorin
  */
 contract IntelliLinker is AccessControl {
 	/**

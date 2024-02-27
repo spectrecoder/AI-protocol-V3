@@ -8,8 +8,6 @@ import "./ShortERC721.sol";
  *
  * @notice Short ERC721 extension to support token burning,
  *      See {ShortERC721}
- *
- * @author Basil Gorin
  */
 abstract contract BurnableShortERC721 is ShortERC721, BurnableERC721 {
 	/**

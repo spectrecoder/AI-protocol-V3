@@ -55,8 +55,6 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
  *      see https://docs.openzeppelin.com/contracts/4.x/upgradeable
  *      see https://docs.openzeppelin.com/contracts/4.x/api/proxy#UUPSUpgradeable
  *      see https://forum.openzeppelin.com/t/uups-proxies-tutorial-solidity-javascript/7786
- *
- * @author Basil Gorin
  */
 abstract contract UpgradeableAccessControl is InitializableAccessControl, UUPSUpgradeable {
 	/**

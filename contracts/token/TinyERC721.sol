@@ -74,8 +74,6 @@ import "../utils/AccessControl.sol";
  *
  * @dev See https://eips.ethereum.org/EIPS/eip-712
  * @dev See usage examples in tests: erc721_permits.js
- *
- * @author Basil Gorin
  */
 abstract contract TinyERC721 is ERC721Enumerable, ERC721Metadata, WithBaseURI, MintableERC721, BurnableERC721, AccessControl {
 	// enable push32 optimization for uint32[]

@@ -13,8 +13,6 @@ import "./RoyalERC721.sol";
  *
  * @dev Whitelabel NFT supports EIP-2981 royalties on NFT secondary sales,
  *      and OpenSea royalties
- *
- * @author Basil Gorin
  */
 contract WhitelabelNFT is RoyalERC721 {
 	/**

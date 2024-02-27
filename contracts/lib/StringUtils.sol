@@ -6,8 +6,6 @@ pragma solidity ^0.8.4;
  *
  * @dev Library for working with strings, primarily converting
  *      between strings and integer types
- *
- * @author Basil Gorin
  */
 library StringUtils {
 	/**

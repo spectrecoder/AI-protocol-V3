@@ -16,10 +16,10 @@ and [HD Wallet](https://www.npmjs.com/package/@truffle/hdwallet-provider)
 ## Repository Description ##
 What's inside?
 
-* [Alethea Protocol On-chain Architecture](docs/Alethea%20Protocol%20On-chain%20Architecture.pdf), containing
+* [AI Protocol Protocol On-chain Architecture](docs/Alethea%20Protocol%20On-chain%20Architecture.pdf), containing
    * Protocol Overview
    * Access Control Technical Design
-   * Alethea ERC20 Token Technical Design
+   * ALI ERC20 Token Technical Design
    * Tiny ERC721 Token Technical Design
    * iNFT Technical Design
    * iNFT Linker Technical Design
@@ -28,7 +28,7 @@ What's inside?
    * NFT Staking Helper Technical Design
    * OpenSea Factory Technical Design
 
-* Alethea ERC20 (ALI) Token
+* ALI ERC20 (ALI) Token
    * Token Audit by Miguel Palhas:  
       [https://hackmd.io/@naps62/alierc20-audit](https://hackmd.io/@naps62/alierc20-audit)
    * Smart Contract(s):
@@ -73,7 +73,7 @@ What's inside?
             (see [EIP3009.behavior.js](test/ali_token/include/coinbase/EIP3009.behavior.js))
       * Voting Delegation Requirements
          * [voting.js](test/ali_token/voting.js) – "Voting Delegation Requirements" tests
-            (see [Alethea Protocol On-chain Architecture](docs/Alethea%20Protocol%20On-chain%20Architecture.pdf))
+            (see [AI Protocol On-chain Architecture](./docs/AI%20Protocol%20On-chain%20Architecture.pdf)
          * [voting_comp.js](test/ali_token/voting_comp.js) – ported from
             [Compound Protocol](https://github.com/compound-finance/compound-protocol)
             (see [Comp.behavior.js](test/ali_token/include/comp/Comp.behavior.js))
@@ -196,9 +196,9 @@ What's inside?
 Following steps were tested to work in macOS Catalina
 
 1. Clone the repository  
-   ```git clone git@github.com:AletheaAI/alethea-contracts.git```
+   ```git clone git@github.com:AI-Protocol-Official/ai-protocol-v3-core.git```
 2. Navigate into the cloned repository  
-   ```cd alethea-contracts```
+   ```cd ai-protocol-v3-core```
 3. Install [Node Version Manager (nvm)](https://github.com/nvm-sh/nvm) – latest  
    ```brew install nvm```
 4. Install [Node package manager (npm)](https://www.npmjs.com/) and [Node.js](https://nodejs.org/) – version 16  
@@ -223,7 +223,7 @@ Following steps were tested to work in macOS Catalina
 * After executing ```npm install``` I get
    ```
    npm ERR! code 127
-   npm ERR! path ./alethea-contracts/node_modules/utf-8-validate
+   npm ERR! path ./ai-protocol-v3-core/node_modules/utf-8-validate
    npm ERR! command failed
    npm ERR! command sh -c node-gyp-build
    npm ERR! sh: node-gyp-build: command not found
@@ -544,4 +544,4 @@ writing interaction (creation of iNFT record) is possible via `iNFT Linker` help
 
 <sup>1)</sup> Decentralized Pre-Trained Transformers
 
-(c) 2021-2024 [Alethea AI](https://alethea.ai/)
+(c) 2021-2024 AI Protocol

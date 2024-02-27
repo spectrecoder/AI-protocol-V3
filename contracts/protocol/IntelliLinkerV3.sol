@@ -29,8 +29,6 @@ import "../utils/UpgradeableAccessControl.sol";
  *        the whitelists introduced in V2
  *
  * @dev NOTE: Contract MUST NOT be deployed from scratch, only V2 -> V3 upgrade is supported!
- *
- * @author Basil Gorin
  */
 contract IntelliLinkerV3 is UpgradeableAccessControl {
 	/**

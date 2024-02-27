@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 // A mock to support erc20_interface_id.js checking ERC20 interfaceId correctness
 contract ERC20InterfaceIdMock {
-	// Alethea ERC20 interfaceId
+	// AI Protocol ERC20 interfaceId
 	function aletheaId() public pure returns(bytes4) {
 		return type(ERC20).interfaceId;
 	}

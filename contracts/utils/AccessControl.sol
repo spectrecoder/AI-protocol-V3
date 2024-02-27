@@ -47,8 +47,6 @@ pragma solidity >=0.4.22; // require with message (0.4.22), pure/view modifiers 
  *
  * @dev Access manager permission has a bit 255 set.
  *      This bit must not be used by inheriting contracts for any other permissions/features.
- *
- * @author Basil Gorin
  */
 abstract contract AccessControl {
 	/**

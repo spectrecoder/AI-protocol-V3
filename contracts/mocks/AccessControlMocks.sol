@@ -8,8 +8,6 @@ import "../utils/UpgradeableAccessControl.sol";
  * @title Access Control Mock
  *
  * @notice Used to test the AccessControl core functionality
- *
- * @author Basil Gorin
  */
 // Used in AccessControl tests to check if `isSenderInRole` works through the `restrictedTo` modifier
 contract AccessControlMock is AccessControl {
@@ -25,8 +23,6 @@ contract AccessControlMock is AccessControl {
  * @title Upgradeable Access Control Mock
  *
  * @notice Used to test the UpgradeableAccessControl core functionality
- *
- * @author Basil Gorin
  */
 contract UpgradeableAccessControl1 is UpgradeableAccessControl {
 	// v1 identifier
@@ -50,8 +46,6 @@ contract UpgradeableAccessControl1 is UpgradeableAccessControl {
  * @title Upgradeable Access Control Mock 2
  *
  * @notice Used to test the UpgradeableAccessControl core functionality
- *
- * @author Basil Gorin
  */
 contract UpgradeableAccessControl2 is UpgradeableAccessControl {
 	// v2 identifier

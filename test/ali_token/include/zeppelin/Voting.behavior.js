@@ -15,7 +15,7 @@ const Wallet = require('ethereumjs-wallet').default;
 const { promisify } = require('util');
 const queue = promisify(setImmediate);
 
-// Alethea: token contract is deployed outside the behavior file
+// AI Protocol: token contract is deployed outside the behavior file
 // const ERC20VotesMock = artifacts.require('ERC20VotesMock');
 
 const { EIP712Domain, domainSeparator } = require('./eip712');
@@ -57,11 +57,11 @@ async function batchInBlock (txs) {
   }
 }
 
-// Alethea: Truffle Contract test suite converted into behavior
-// Alethea: remove versionId from the EIP712 DomainSeparator
+// AI Protocol: Truffle Contract test suite converted into behavior
+// AI Protocol: remove versionId from the EIP712 DomainSeparator
 function shouldBehaveLikeVoting(name, symbol, supply, holder, recipient, holderDelegate, other1, other2) {
   beforeEach(async function () {
-    // Alethea: Chain ID opcode hardcoded at 1 in Ganache-cli, but not in Hardhat
+    // AI Protocol: Chain ID opcode hardcoded at 1 in Ganache-cli, but not in Hardhat
     // See: https://github.com/trufflesuite/ganache/issues/1643
     //      https://github.com/trufflesuite/ganache-core/issues/515
     this.chainId = await web3.eth.net.getId();
@@ -75,7 +75,7 @@ function shouldBehaveLikeVoting(name, symbol, supply, holder, recipient, holderD
     expect(
       await this.token.DOMAIN_SEPARATOR(),
     ).to.equal(
-      // Alethea: remove versionId from the EIP712 DomainSeparator
+      // AI Protocol: remove versionId from the EIP712 DomainSeparator
       await domainSeparator(name, this.chainId, this.token.address),
     );
   });
@@ -138,7 +138,7 @@ function shouldBehaveLikeVoting(name, symbol, supply, holder, recipient, holderD
       const buildData = (chainId, verifyingContract, message) => ({ data: {
         primaryType: 'Delegation',
         types: { EIP712Domain, Delegation },
-        // Alethea: remove versionId from the EIP712 Domain
+        // AI Protocol: remove versionId from the EIP712 Domain
         domain: { name, chainId, verifyingContract },
         message,
       }});

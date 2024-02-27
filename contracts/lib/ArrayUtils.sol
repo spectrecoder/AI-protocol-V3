@@ -10,8 +10,6 @@ pragma solidity ^0.8.4;
  *
  * @dev One of the most important use cases for arrays is "tight" arrays -
  *      arrays which store values significantly less than 256-bits numbers
- *
- * @author Basil Gorin
  */
 library ArrayUtils {
 	/**

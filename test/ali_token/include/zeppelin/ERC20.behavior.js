@@ -89,7 +89,7 @@ function shouldBehaveLikeERC20 (errorPrefix, initialSupply, initialHolder, recip
           describe('when the token owner does not have enough balance', function () {
             const amount = initialSupply.addn(1);
 
-            // Alethea: fix original Zeppelin bug: spender didn't have enough allowance
+            // AI Protocol: fix original Zeppelin bug: spender didn't have enough allowance
             beforeEach(async function () {
               await this.token.approve(spender, amount, { from: initialHolder });
             });
@@ -122,7 +122,7 @@ function shouldBehaveLikeERC20 (errorPrefix, initialSupply, initialHolder, recip
 
             it('reverts', async function () {
               await expectRevert(this.token.transferFrom(
-                // Alethea: allowance check goes prior to balance check
+                // AI Protocol: allowance check goes prior to balance check
                 tokenOwner, to, amount, { from: spender }), `${errorPrefix}transfer amount exceeds allowance`,
               );
             });

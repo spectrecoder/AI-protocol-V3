@@ -10,8 +10,6 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
  *
  * @notice Zeppelin ERC721 Mock simulates an NFT token, used for testing purposes;
  *      it has unrestricted access to the mint() function and can be used to be bound to an iNFT
- *
- * @author Basil Gorin
  */
 contract ZeppelinERC721Mock is ERC721Enumerable, ERC721URIStorage, MintableERC721, BurnableERC721 {
 	/**

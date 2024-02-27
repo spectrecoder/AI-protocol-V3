@@ -21,8 +21,6 @@ import "../utils/UpgradeableAccessControl.sol";
  * @dev V2 modification
  *      - supports two separate whitelists for linking and unlinking
  *      - is upgradeable
- *
- * @author Basil Gorin
  */
 contract IntelliLinkerV2 is UpgradeableAccessControl {
 	/**
